@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 
 	<head>
 		<!-- Meta -->
@@ -58,10 +58,10 @@
                 <div class="navbar-collapse collapse">
                     <nav>
 						 <ul class="nav navbar-nav navbar-right">
-							<li><a href="#">研討會首頁</a></li>
-							<li><a href="#">投稿系統</a></li>
-							<li><a href="#">報名研討會</a></li>
-							<li><a href="#">後臺登入</a></li>
+							<li><a href="https://tanet2022.ntub.edu.tw/" target="_blank">研討會首頁</a></li>
+							<li><a href="https://tanetsys.mcu.edu.tw/index.php/tanet2022/tanet2022" target="_blank">投稿系統</a></li>
+							<li><a href="registration.php">報名研討會</a></li>
+							<li><a href="login.php">後臺登入</a></li>
 						</ul>
 					</nav>
                 </div> 
@@ -70,16 +70,15 @@
 		<!-- END NAVBAR -->		
 		
 		<!-- START  HOME DESIGN -->
-		<section class="section-top" style="background-image: url(assets/img/bg/section-bg.jpg);  background-size:contain; background-position: center center;background-attachment:scroll;">
+		<!-- <section class="section-top" style="background-image: url(assets/img/bg/section-bg.jpg);  background-size:auto; background-position: center center;"> -->
+		<section class="section-top" style="background-image: url(assets/img/bg/section-bg.jpg);background-position: center center;">
 		<div class="overlay">
 			<div class="container">
 					<div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
 						<div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
-							<!-- <h1>報名研討會</h1>
 							<ol class="breadcrumb">
-							  <li><a href="index.php">首頁</a></li>
-							  <li class="active">報名參與</li>
-							</ol> -->
+							  <li><a></a></li>
+							</ol>
 						</div><!-- //.HERO-TEXT -->
 					</div><!--- END COL -->
 				</div><!--- END CONTAINER -->
@@ -356,10 +355,10 @@
 							<div class="single_footer">
 								<h1>相關連結</h1>
 								<ul>
-									<li><a href="#">研討會首頁</a></li>
-									<li><a href="#">投稿系統</a></li>
-									<li><a href="#">報名研討會</a></li>
-									<li><a href="#">後臺登入</a></li>
+									<li><a href="https://tanet2022.ntub.edu.tw/" target="_blank">研討會首頁</a></li>
+									<li><a href="https://tanetsys.mcu.edu.tw/index.php/tanet2022/tanet2022" target="_blank">投稿系統</a></li>
+									<li><a href="registration.php">報名研討會</a></li>
+									<li><a href="login.php">後臺登入</a></li>
 								</ul>
 							</div>
 						</div><!--- END COL -->		
