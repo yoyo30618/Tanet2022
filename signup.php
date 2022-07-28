@@ -133,43 +133,185 @@
 				<div class="row">
 					<div class="section-title text-center wow zoomIn">
 						<h1>填寫報名相關資料</h1>
-						<p>本研討會時間N年N月N日於X舉行</p>
+						<p>本研討會時間2022年12月15-17日<br>於國立臺北商業大學桃園校區舉行</p>
 						<span></span>
 					</div>						
 					<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
 						<div class="faq_desc">
-							<p class="question"><span>Question:</span> Aenean cursus imperdiet</p>
-							<p class="ans"><span>Ans:</span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi perferendis magnam ea necessitatibus, officiis voluptas odit! Aperiam omnis.</p>
-						</div>
-						</div><!--- END COL -->
-						<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
-							<div class="faq_desc">
-								<p class="question"><span>Question:</span> Aenean cursus imperdiet</p>
-								<p class="ans"><span>Ans:</span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi perferendis magnam ea necessitatibus, officiis voluptas odit! Aperiam omnis.</p>
-							</div>
-						</div><!--- END COL -->
-					<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.4s" data-wow-offset="0">
-						<div class="faq_desc">
-							<p class="question"><span>Question:</span> Aenean cursus imperdiet</p>
-							<p class="ans"><span>Ans:</span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi perferendis magnam ea necessitatibus, officiis voluptas odit! Aperiam omnis.</p>
+							<p class="question"><span>基本資料:</span></p>
+							<p class="ans">
+								姓名：<input type="text" class="form-control" name="" required="required"></input>	
+								服務單位/就讀學校：<input type="text" class="form-control" name="" required="required"></input>	
+								身份別：<input type="text" class="form-control" name="" required="required"></input>	
+								職稱：<input type="text" class="form-control" name="" required="required"></input>	
+								電子信箱：<input type="text" class="form-control" name="" required="required"></input>	
+								連絡電話：<input type="text" class="form-control" name="" required="required"></input>	
+								論文篇數：<input type="text" class="form-control" name="" required="required"></input>	
+								論文篇數(主編)：<input type="text" class="form-control" name="" required="required"></input>	
+								論文編號：<input type="text" class="form-control" name="" required="required"></input>	
+							</p>
 						</div>
 					</div><!--- END COL -->
-					<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.4s" data-wow-offset="0">
+					<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
 						<div class="faq_desc">
-							<p class="question"><span>Question:</span> Aenean cursus imperdiet</p>
-							<p class="ans"><span>Ans:</span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi perferendis magnam ea necessitatibus, officiis voluptas odit! Aperiam omnis.</p>
+							<p class="question"><span>報名資訊:</span></p>
+							收據抬頭：<input type="text" class="form-control" name="" required="required"></input>	
+							統一編號：<input type="text" class="form-control" name="" required="required"></input>	
+							繳費方式：<input type="text" class="form-control" name="" required="required"></input>	
+							繳費日期：<input type="text" class="form-control" name="" required="required"></input>	
+							繳款金額：<input type="text" class="form-control" name="" required="required"></input>	
+							收據號碼?：<input type="text" class="form-control" name="" required="required"></input>	
+							交易序號?：<input type="text" class="form-control" name="" required="required"></input>	
+							特殊身份：<input type="text" class="form-control" name="" required="required"></input>	
 						</div>
 					</div><!--- END COL -->
-					<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.4s" data-wow-offset="0">
+					<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
 						<div class="faq_desc">
-							<p class="question"><span>Question:</span> Aenean cursus imperdiet</p>
-							<p class="ans"><span>Ans:</span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi perferendis magnam ea necessitatibus, officiis voluptas odit! Aperiam omnis.</p>
+							<p class="question"><span>研討會相關:</span></p>
+							交通方式：<input type="text" class="form-control" name="" required="required"></input>	
+							12/15(四)接駁車班次：<input type="text" class="form-control" name="" required="required"></input>	
+							12/16(五)接駁車班次：<input type="text" class="form-control" name="" required="required"></input>	
+							12/17(六)接駁車班次：<input type="text" class="form-control" name="" required="required"></input>	
+							入校車號：<input type="text" class="form-control" name="" required="required"></input>	
+							<table class="table">
+								<thead class="thead-dark">
+									<tr>
+									<th scope="col">用餐調查</th>
+									<th scope="col">葷</th>
+									<th scope="col">素</th>
+									<th scope="col">不需要</th>
+									</tr>
+								</thead>
+  								<tbody>
+									<tr>
+      									<th scope="row">12/15(四)午餐</th>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+									</tr>
+									<tr>
+      									<th scope="row">12/15(四)晚餐</th>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+									</tr>
+									<tr>
+      									<th scope="row">12/16(五)午餐</th>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+									</tr>
+									<tr>
+      									<th scope="row">12/16(五)晚餐</th>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+									</tr>
+									<tr>
+      									<th scope="row">12/17(六)午餐</th>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+									</tr>
+									<tr>
+      									<th scope="row">12/17(六)晚餐</th>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<table class="table">
+								<thead class="thead-dark">
+									<tr>
+									<th scope="col">用餐調查</th>
+									<th scope="col">葷</th>
+									<th scope="col">素</th>
+									<th scope="col">不需要</th>
+									</tr>
+								</thead>
+  								<tbody>
+									<tr>
+      									<th scope="row">12/15(四)午餐</th>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+									</tr>
+									<tr>
+      									<th scope="row">12/15(四)晚餐</th>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+									</tr>
+									<tr>
+      									<th scope="row">12/16(五)午餐</th>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+										<td>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							其他：<input type="text" class="form-control" name="" required="required"></input>	
 						</div>
 					</div><!--- END COL -->
-					<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.4s" data-wow-offset="0">
+					<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
 						<div class="faq_desc">
-							<p class="question"><span>Question:</span> Aenean cursus imperdiet</p>
-							<p class="ans"><span>Ans:</span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi perferendis magnam ea necessitatibus, officiis voluptas odit! Aperiam omnis.</p>
+							<p class="question"><span>12345:</span></p>
+							<p class="ans">這裡放東西</p>
 						</div>
 					</div><!--- END COL -->
 				</div><!--- END ROW -->
