@@ -86,252 +86,256 @@
 		</section>	
 		<!-- END  HOME DESIGN -->	
 
-		<!-- START FAQ -->
-		<section class="faq">
-			<div class="container">
-				<div class="row">
-					<div class="section-title text-center wow zoomIn">
-						<h1>填寫報名相關資料</h1>
-						<p>本研討會時間2022年12月15-17日<br>於國立臺北商業大學桃園校區舉行</p>
-						<span></span>
-					</div>						
-					<div class="col-md-12 col-sm-12 col-xs-12 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
-						<div class="faq_desc">
-							<p class="question"><span>基本資料:</span></p>
-							<p class="ans">
+		<!-- START FORM -->
+		<form method="post" action="submitdata.php" name="registration" id="registration">
+			<section class="faq">
+				<div class="container">
+					<div class="row">
+						<div class="section-title text-center wow zoomIn">
+							<h1>填寫報名相關資料</h1>
+							<p>本研討會時間2022年12月15-17日<br>於國立臺北商業大學桃園校區舉行</p>
+							<span></span>
+						</div>						
+						<div class="col-md-12 col-sm-12 col-xs-12 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+							<div class="faq_desc">
+								<p class="question"><span>基本資料:</span></p>
+								<p class="ans">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text" id="basic-addon1">　　　　　　　姓名</span>
+										</div>
+										<input type="text"  required="required" name="Cname" class="form-control" placeholder="請輸入姓名" aria-label="Username" aria-describedby="basic-addon1">
+									</div>
+									<br>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text" id="basic-addon1">服務單位／就讀學校</span>
+										</div>
+										<input type="text"  required="required" name="Unit" class="form-control" placeholder="請輸入服務單位／就讀學校" aria-label="Username" aria-describedby="basic-addon1">
+									</div>
+									<br>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text" id="basic-addon1">　　　　　　身份別</span>
+										</div>
+										<select class="form-control" name="Identity">
+											<option value="學⽣（不需發表論⽂者）" selected>學⽣（不需發表論⽂者） NT$2,500</option>
+											<option value="教授（不需發表論⽂者）">教授（不需發表論⽂者） NT$3,000</option>
+											<option value="政府單位">政府單位 NT$3,000</option>
+											<option value="⼀般⼈⼠">⼀般⼈⼠ NT$3,000</option>
+											<option value="發表論⽂者">發表論⽂者（⼝頭或海報發表皆需報名） NT$3,000</option>
+											<option value="教育部免費名額">教育部免費名額</option>
+											<option value="主編">主編（免註冊費，論⽂⼀篇NT$1,000）</option>
+											<option value="贊助廠商">贊助廠商</option>
+										</select>
+									</div>
+									<br>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text" id="basic-addon1">　　　　　　　職稱</span>
+										</div>
+										<input type="text"  required="required" name="Job" class="form-control" placeholder="請輸入職稱" aria-label="Username" aria-describedby="basic-addon1">
+									</div>
+									<br>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text" id="basic-addon1">　　　　　電子信箱</span>
+										</div>
+										<input type="email"  required="required" name="Email" class="form-control" placeholder="請輸入電子信箱" aria-label="Username" aria-describedby="basic-addon1">
+									</div>
+									<br>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text" id="basic-addon1">　　　　　連絡電話</span>
+										</div>
+										<input type="text"  required="required" name="Phone" class="form-control" placeholder="請輸入連絡電話" aria-label="Username" aria-describedby="basic-addon1">
+									</div>
+									<br>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text" id="basic-addon1">　　　　　論文篇數</span>
+										</div>
+										<input type="text"  required="required" name="PapersAmount" class="form-control" placeholder="請輸入論文篇數" aria-label="Username" aria-describedby="basic-addon1">
+									</div>
+									<br>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text" id="basic-addon1">　論文篇數（主編）</span>
+										</div>
+										<input type="text"  required="required" name="PapersAmount_ChiefEditor" class="form-control" placeholder="請輸入論文篇數（主編）" aria-label="Username" aria-describedby="basic-addon1">
+									</div>
+									<br>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text" id="basic-addon1">　　　　　論文編號</span>
+										</div>
+										<input type="text" name="PapersID" class="form-control" placeholder="請輸入論文編號（依半形逗號分隔）" aria-label="Username" aria-describedby="basic-addon1">
+									</div>
+								</p>
+							</div>
+						</div><!--- END COL -->
+						<div class="col-md-12 col-sm-12 col-xs-12 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+							<div class="faq_desc">
+								<p class="question"><span>研討會相關:</span></p>
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon1">　　　　　　　姓名</span>
+										<span class="input-group-text" id="basic-addon1">　　　　　　　 交通方式</span>
 									</div>
-									<input type="text" class="form-control" placeholder="請輸入姓名" aria-label="Username" aria-describedby="basic-addon1">
+									
+									<select class="form-control" name="Transportation">
+										<option value="自行開車" selected>自行開車</option>
+										<option value="搭乘大會接駁車">搭乘大會接駁車</option>
+										<option value="自行安排">自行安排</option>
+									</select>
 								</div>
 								<br>
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon1">服務單位／就讀學校</span>
+										<span class="input-group-text" id="basic-addon1">　　　　　　　 入校車號</span>
 									</div>
-									<input type="text" class="form-control" placeholder="請輸入服務單位／就讀學校" aria-label="Username" aria-describedby="basic-addon1">
+									<input type="text" name="CarLicense" class="form-control" placeholder="請輸入入校車號" aria-label="Username" aria-describedby="basic-addon1">
 								</div>
 								<br>
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon1">　　　　　　身份別</span>
+										<span class="input-group-text" id="basic-addon1">12／15（四）接駁車班次</span>
 									</div>
-									<input type="text" class="form-control" placeholder="請輸入身份別" aria-label="Username" aria-describedby="basic-addon1">
+									<input type="text" name="ShuttleBus_D1" class="form-control" placeholder="請輸入12／15（四）接駁車班次" aria-label="Username" aria-describedby="basic-addon1">
 								</div>
 								<br>
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon1">　　　　　　　職稱</span>
+										<span class="input-group-text" id="basic-addon1">12／16（五）接駁車班次</span>
 									</div>
-									<input type="text" class="form-control" placeholder="請輸入職稱" aria-label="Username" aria-describedby="basic-addon1">
+									<input type="text" name="ShuttleBus_D2" class="form-control" placeholder="請輸入12／16（五）接駁車班次" aria-label="Username" aria-describedby="basic-addon1">
 								</div>
 								<br>
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon1">　　　　　電子信箱</span>
+										<span class="input-group-text" id="basic-addon1">12／17（六）接駁車班次</span>
 									</div>
-									<input type="text" class="form-control" placeholder="請輸入電子信箱" aria-label="Username" aria-describedby="basic-addon1">
+									<input type="text" name="ShuttleBus_D3" class="form-control" placeholder="請輸入12／17（六）接駁車班次" aria-label="Username" aria-describedby="basic-addon1">
+								</div>
+								<br>
+								<table class="table">
+									<thead class="thead-dark">
+										<tr>
+										<th scope="col">用餐調查</th>
+										<th scope="col">葷</th>
+										<th scope="col">素</th>
+										<th scope="col">不需要</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th scope="row">12／15（四）午餐</th>
+											<td>
+												<input  required="required" class="form-check-input" type="radio" name="Lunch_D1" id="flexRadioDefault1" value="葷">
+											</td>
+											<td>
+												<input required="required"  class="form-check-input" type="radio" name="Lunch_D1" id="flexRadioDefault1" value="素">
+											</td>
+											<td>
+												<input  required="required" class="form-check-input" type="radio" name="Lunch_D1" id="flexRadioDefault1" value="不需要">
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">12／15（四）晚餐</th>
+											<td>
+												<input  required="required" class="form-check-input" type="radio" name="Dinner_D1" id="flexRadioDefault1" value="葷">
+											</td>
+											<td>
+												<input  required="required" class="form-check-input" type="radio" name="Dinner_D1" id="flexRadioDefault1" value="素">
+											</td>
+											<td>
+												<input  required="required" class="form-check-input" type="radio" name="Dinner_D1" id="flexRadioDefault1" value="不需要">
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">12／16（五）午餐</th>
+											<td>
+												<input required="required" class="form-check-input" type="radio" name="Lunch_D2" id="flexRadioDefault1" value="葷">
+											</td>
+											<td>
+												<input required="required" class="form-check-input" type="radio" name="Lunch_D2" id="flexRadioDefault1" value="素">
+											</td>
+											<td>
+												<input required="required" class="form-check-input" type="radio" name="Lunch_D2" id="flexRadioDefault1" value="不需要">
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">12／16（五）晚餐</th>
+											<td>
+												<input required="required" class="form-check-input" type="radio" name="Dinner_D2" id="flexRadioDefault1" value="葷">
+											</td>
+											<td>
+												<input required="required" class="form-check-input" type="radio" name="Dinner_D2" id="flexRadioDefault1" value="素">
+											</td>
+											<td>
+												<input required="required" class="form-check-input" type="radio" name="Dinner_D2" id="flexRadioDefault1" value="不需要">
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">12／17（六）午餐</th>
+											<td>
+												<input required="required" class="form-check-input" type="radio" name="Lunch_D3" id="flexRadioDefault1" value="葷">
+											</td>
+											<td>
+												<input required="required" class="form-check-input" type="radio" name="Lunch_D3" id="flexRadioDefault1" value="素">
+											</td>
+											<td>
+												<input required="required" class="form-check-input" type="radio" name="Lunch_D3" id="flexRadioDefault1" value="不需要">
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="basic-addon1">晚宴攜伴調查（葷食）</span>
+									</div>
+									<input type="text" required="required" name="DinnerCompanion_Omnivorous" class="form-control" placeholder="請輸入晚宴攜伴人數（葷食）" aria-label="Username" aria-describedby="basic-addon1" value="0">
 								</div>
 								<br>
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon1">　　　　　連絡電話</span>
+										<span class="input-group-text" id="basic-addon1">晚宴攜伴調查（素食）</span>
 									</div>
-									<input type="text" class="form-control" placeholder="請輸入連絡電話" aria-label="Username" aria-describedby="basic-addon1">
+									<input type="text" required="required" name="DinnerCompanion_Vegetarian" class="form-control" placeholder="請輸入晚宴攜伴人數（素食）" aria-label="Username" aria-describedby="basic-addon1" value="0">
+								</div>
+								<br>
+								其他特殊註記：<input type="text" name="Notice" class="form-control" name=""></input>	
+							</div>
+						</div><!--- END COL -->
+						<div class="col-md-12 col-sm-12 col-xs-12 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+							<div class="faq_desc">
+								<p class="question"><span>收據資訊:</span></p>
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="basic-addon1">收據抬頭</span>
+									</div>
+									<input type="text" name="ReceiptHeader" class="form-control" placeholder="請輸入收據抬頭" aria-label="Username" aria-describedby="basic-addon1">
 								</div>
 								<br>
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon1">　　　　　論文篇數</span>
+										<span class="input-group-text" id="basic-addon1">統一編號</span>
 									</div>
-									<input type="text" class="form-control" placeholder="請輸入論文篇數" aria-label="Username" aria-describedby="basic-addon1">
+									<input type="text" name="TaxID" class="form-control" placeholder="請輸入統一編號" aria-label="Username" aria-describedby="basic-addon1">
 								</div>
 								<br>
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon1">　論文篇數（主編）</span>
-									</div>
-									<input type="text" class="form-control" placeholder="請輸入論文篇數（主編）" aria-label="Username" aria-describedby="basic-addon1">
-								</div>
-								<br>
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon1">　　　　　論文編號</span>
-									</div>
-									<input type="text" class="form-control" placeholder="請輸入論文編號" aria-label="Username" aria-describedby="basic-addon1">
-								</div>
-							</p>
-						</div>
-					</div><!--- END COL -->
-					<div class="col-md-12 col-sm-12 col-xs-12 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
-						<div class="faq_desc">
-							<p class="question"><span>研討會相關:</span></p>
-							<div class="input-group mb-3">
-								<div class="input-group-prepend">
-									<span class="input-group-text" id="basic-addon1">　　　　　　　 交通方式</span>
-								</div>
-								<input type="text" class="form-control" placeholder="請輸入交通方式" aria-label="Username" aria-describedby="basic-addon1">
 							</div>
-							<br>
-							<div class="input-group mb-3">
-								<div class="input-group-prepend">
-									<span class="input-group-text" id="basic-addon1">　　　　　　　 入校車號</span>
-								</div>
-								<input type="text" class="form-control" placeholder="請輸入入校車號" aria-label="Username" aria-describedby="basic-addon1">
+						</div><!--- END COL -->
+						<div class="col-md-12 col-sm-12 col-xs-12 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+							<div class="faq_desc">
+								<p class="question"><span>個資同意宣告:</span></p>
+								<p class="ans">這裡放東西</p>
+								<button type="submit"  form="registration" class="btn btn-success">同意以上宣告並確定報名</button>
 							</div>
-							<br>
-							<div class="input-group mb-3">
-								<div class="input-group-prepend">
-									<span class="input-group-text" id="basic-addon1">12／15（四）接駁車班次</span>
-								</div>
-								<input type="text" class="form-control" placeholder="請輸入12／15（四）接駁車班次" aria-label="Username" aria-describedby="basic-addon1">
-							</div>
-							<br>
-							<div class="input-group mb-3">
-								<div class="input-group-prepend">
-									<span class="input-group-text" id="basic-addon1">12／16（五）接駁車班次</span>
-								</div>
-								<input type="text" class="form-control" placeholder="請輸入12／16（五）接駁車班次" aria-label="Username" aria-describedby="basic-addon1">
-							</div>
-							<br>
-							<div class="input-group mb-3">
-								<div class="input-group-prepend">
-									<span class="input-group-text" id="basic-addon1">12／17（六）接駁車班次</span>
-								</div>
-								<input type="text" class="form-control" placeholder="請輸入12／17（六）接駁車班次" aria-label="Username" aria-describedby="basic-addon1">
-							</div>
-							<br>
-							<table class="table">
-								<thead class="thead-dark">
-									<tr>
-									<th scope="col">用餐調查</th>
-									<th scope="col">葷</th>
-									<th scope="col">素</th>
-									<th scope="col">不需要</th>
-									</tr>
-								</thead>
-  								<tbody>
-									<tr>
-      									<th scope="row">12／15(四)午餐</th>
-										<td>
-											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-										</td>
-										<td>
-											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-										</td>
-										<td>
-											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-										</td>
-									</tr>
-									<tr>
-      									<th scope="row">12／15(四)晚餐</th>
-										<td>
-											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-										</td>
-										<td>
-											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-										</td>
-										<td>
-											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-										</td>
-									</tr>
-									<tr>
-      									<th scope="row">12／16(五)午餐</th>
-										<td>
-											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-										</td>
-										<td>
-											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-										</td>
-										<td>
-											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-										</td>
-									</tr>
-									<tr>
-      									<th scope="row">12/16(五)晚餐</th>
-										<td>
-											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-										</td>
-										<td>
-											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-										</td>
-										<td>
-											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-										</td>
-									</tr>
-									<tr>
-      									<th scope="row">12/17(六)午餐</th>
-										<td>
-											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-										</td>
-										<td>
-											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-										</td>
-										<td>
-											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-										</td>
-									</tr>
-									<tr>
-      									<th scope="row">12/17(六)晚餐</th>
-										<td>
-											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-										</td>
-										<td>
-											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-										</td>
-										<td>
-											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-										</td>
-									</tr>
-								</tbody>
-							</table>
-							<div class="input-group mb-3">
-								<div class="input-group-prepend">
-									<span class="input-group-text" id="basic-addon1">晚宴攜伴調查(葷食)</span>
-								</div>
-								<input type="text" class="form-control" placeholder="請輸入晚宴攜伴人數(葷食)" aria-label="Username" aria-describedby="basic-addon1">
-							</div>
-							<br>
-							<div class="input-group mb-3">
-								<div class="input-group-prepend">
-									<span class="input-group-text" id="basic-addon1">晚宴攜伴調查(素食)</span>
-								</div>
-								<input type="text" class="form-control" placeholder="請輸入晚宴攜伴人數(素食)" aria-label="Username" aria-describedby="basic-addon1">
-							</div>
-							<br>
-							其他：<input type="text" class="form-control" name=""></input>	
-						</div>
-					</div><!--- END COL -->
-					<div class="col-md-12 col-sm-12 col-xs-12 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
-						<div class="faq_desc">
-							<p class="question"><span>收據資訊:</span></p>
-							<div class="input-group mb-3">
-								<div class="input-group-prepend">
-									<span class="input-group-text" id="basic-addon1">收據抬頭</span>
-								</div>
-								<input type="text" class="form-control" placeholder="請輸入收據抬頭" aria-label="Username" aria-describedby="basic-addon1">
-							</div>
-							<br>
-							<div class="input-group mb-3">
-								<div class="input-group-prepend">
-									<span class="input-group-text" id="basic-addon1">統一編號</span>
-								</div>
-								<input type="text" class="form-control" placeholder="請輸入統一編號" aria-label="Username" aria-describedby="basic-addon1">
-							</div>
-							<br>
-						</div>
-					</div><!--- END COL -->
-					<div class="col-md-12 col-sm-12 col-xs-12 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
-						<div class="faq_desc">
-							<p class="question"><span>個資同意宣告:</span></p>
-							<p class="ans">這裡放東西</p>
-						</div>
-					</div><!--- END COL -->
-				</div><!--- END ROW -->
-			</div><!--- END CONTAINER -->
-		</section>
-		<!-- END FAQ -->
+						</div><!--- END COL -->
+					</div><!--- END ROW -->
+				</div><!--- END CONTAINER -->
+			</section>
+		<!-- END FORM -->
 	
 		<!-- START FOOTER TOP-->
 		<section class="footer-top">
@@ -344,7 +348,7 @@
 								<p>本年度大會主題定為「元宇宙時代之智慧創新科技」。此外，本年度將也包含近年來關注的主題，包含５Ｇ行動通訊、物聯網、人工智慧、大數據、雲端技術、資訊安全、個人資料保護、數位創新學習、數位基礎設施等，期盼透過此研討會邀集產官學界的專家學者、台灣區網的資訊服務人員、網路從業人員的互動，藉由聚焦上述議題與廣泛之討論，提升資訊相關產業能量，探討建構一個智慧、創新且安全資訊環境。</p>
 								<div class="footer_contact">
 									<ul>
-										<li><i class="fa fa-phone"></i> 聯絡窗口(張雅媛 小姐) -  (03)4506333#8131</li>
+										<li><i class="fa fa-phone"></i> 聯絡窗口（張雅媛 小姐） -  （03）4506333#8131</li>
 										<li><i class="fa fa-envelope"></i> tanet2022@ntub.edu.tw</li>
 										<li><i class="fa fa-rocket"></i> 國立臺北商業大學平鎮校區</li>
 									</ul>
