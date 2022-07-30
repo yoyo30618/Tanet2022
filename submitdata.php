@@ -96,6 +96,14 @@
 		//加入Alltable
 		$sql_query_InsertAlltable="INSERT INTO `alltable`(`accountid`, `financeID`, `personalID`, `seminarID`) VALUES ('','$Finance_LastID','$Personal_LastID','$Seminar_LastID')";
 		$InsertAlltable_result=mysqli_query($db_link,$sql_query_InsertAlltable) or die("InsertAlltable查詢失敗");
+
+		$Alltable_LastID="-1";
+		$sql_query_LastID="SELECT LAST_INSERT_ID() AS LAST_ID";//取得剛剛加入ID
+		$LastID_result=mysqli_query($db_link,$sql_query_LastID) or die("InsertFinance查詢失敗");//上一筆加入的ID
+		while($row_LastID=mysqli_fetch_array($LastID_result)){
+			$Alltable_LastID=$row_LastID['LAST_ID'];
+			break;
+		}
 	}
 	else
 		echo"<script  language=\"JavaScript\">alert('請由正確路徑進入');location.href=\"registration.php\";</script>";
@@ -132,6 +140,15 @@
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
+		<style>	
+			.zoomimage{
+				background-size:contain;
+				background-position: center center;
+				background-repeat: no-repeat;
+				-webkit-background-size: cover;
+				-moz-background-size: cover;
+			}
+		</style>
 	</head>
 	
     <body>
@@ -172,7 +189,7 @@
 		
 		<!-- START  HOME DESIGN -->
 		<!-- <section class="section-top" style="background-image: url(assets/img/bg/section-bg.jpg);  background-size:auto; background-position: center center;"> -->
-		<section class="section-top" style="background-image: url(assets/img/bg/section-bg.jpg);background-position: center center;">
+		<section class="section-top" style="background-image: url(assets/img/bg/section-bg.jpg);">
 		<div class="overlay">
 			<div class="container">
 					<div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
@@ -199,6 +216,9 @@
 						</div>						
 						<div class="col-md-12 col-sm-12 col-xs-12 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
 							<div class="faq_desc">
+								<?php
+									echo "<h1 style='color:red;'>報名完成，報名序號：$Alltable_LastID</h1>"
+								?>
 								<p class="question"><span>基本資料:</span></p>
 								<p class="ans">
 									<div class="input-group mb-3">

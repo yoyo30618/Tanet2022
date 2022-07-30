@@ -30,7 +30,15 @@
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
-
+		<style>	
+			.zoomimage{
+				background-size:contain;
+				background-position: center center;
+				background-repeat: no-repeat;
+				-webkit-background-size: cover;
+				-moz-background-size: cover;
+			}
+		</style>
 	</head>
 	
     <body>
@@ -71,7 +79,7 @@
 		
 		<!-- START  HOME DESIGN -->
 		<!-- <section class="section-top" style="background-image: url(assets/img/bg/section-bg.jpg);  background-size:auto; background-position: center center;"> -->
-		<section class="section-top" style="background-image: url(assets/img/bg/section-bg.jpg);background-position: center center;">
+		<section class="section-top zoomimage" style="background-image: url(assets/img/bg/section-bg.jpg);">
 		<div class="overlay">
 			<div class="container">
 					<div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
