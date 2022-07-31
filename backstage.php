@@ -130,10 +130,16 @@
 								<th scope="col">繳費日期</th>
 								<th scope="col">繳費金額</th>
 								<th scope="col">特殊案例</th>
+								<th scope="col">信件通知</th>
 								<th scope="col">處理</th>
 								</tr>
 							</thead>
 							<tbody>
+								<tr>	
+									<td colspan="14" align="right" valign="top">
+										<button type='submit'  form='updatedata' class='btn btn-success' name='updatedata' value='all'>全部儲存</button>
+									</td>
+								</tr>
 								<?php 
 										$sql_query_DataID="SELECT * FROM `alltable` WHERE 1";//取得報名資訊ID
 										$DataID_result=mysqli_query($db_link,$sql_query_DataID) or die("Data_result查詢失敗");
@@ -153,10 +159,10 @@
 												while($row_FinanceData=mysqli_fetch_array($FinanceData_result)){//查出PersonalData
 													echo "<td>".$row_FinanceData['ReceiptHeader']."</td>";
 													echo "<td>".$row_FinanceData['TaxID']."</td>";
-													echo "<td><input type='text' name='' class='form-control' value='".$row_FinanceData['ReceiptID']."'></td>";
-													echo "<td><input type='text' name='' class='form-control' value='".$row_FinanceData['TransactionID']."'></td>";
+													echo "<td><input type='text' name='".$row_FinanceData['_ID']."_ReceiptID' class='form-control' value='".$row_FinanceData['ReceiptID']."'></td>";
+													echo "<td><input type='text' name='".$row_FinanceData['_ID']."_TransactionID' class='form-control' value='".$row_FinanceData['TransactionID']."'></td>";
 													echo "<td>";
-														echo "<select class='form-control' name='Identity'>";
+														echo "<select class='form-control' name='".$row_FinanceData['_ID']."_PaymentMethod'>";
 															echo "<option value='未繳'";
 																if($row_FinanceData['PaymentMethod']=="未繳") echo "selected";
 															echo ">未繳</option>";
@@ -172,13 +178,18 @@
 														echo "</select>";
 													echo "</td>";
 													echo "<td>";
-														echo "<input type='date' name='bday' value='".$row_FinanceData['PaymentDate']."'>";
+														echo "<input type='date' name='".$row_FinanceData['_ID']."_PaymentDate' value='".$row_FinanceData['PaymentDate']."'>";
 													echo "</td>";
-													echo "<td><input type='text' name='' class='form-control' value='".$row_FinanceData['PaymentAmount']."'></td>";
-													echo "<td><input type='text' name='' class='form-control' value='".$row_FinanceData['SpecialCase']."'></td>";
+													echo "<td><input type='text' name='".$row_FinanceData['_ID']."_PaymentAmount' class='form-control' value='".$row_FinanceData['PaymentAmount']."'></td>";
+													echo "<td><input type='text' name='".$row_FinanceData['_ID']."_SpecialCase' class='form-control' value='".$row_FinanceData['SpecialCase']."'></td>";
+													echo "<td>";
+														echo "<input type='checkbox' name='".$row_FinanceData['_ID']."_LetterNotification' class='form-check-input'";
+														if($row_FinanceData['LetterNotification']==1) echo 'checked';
+														echo">";
+													echo "</td>";
 													break;
 												}
-												echo "<td><button type='submit'  form='updatedata' class='btn btn-success'>修正資料</button></td>";
+												echo "<td><button type='submit'  form='updatedata' class='btn btn-success' name='updatedata' value='".$row_FinanceData['_ID']."'>更新資料</button></td>";
 											echo "</tr>";
 										}
 									?>
