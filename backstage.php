@@ -3,10 +3,13 @@
 	session_start();//開啟session
 	include_once("conn_mysql.php");
 	if(isset($_SESSION['tanet2022_Islogin'])){
-		echo"<script  language=\"JavaScript\">location.href=\"backstage.php\";</script>";
+
 	}
+	else
+		echo"<script  language=\"JavaScript\">alert('請先登入');location.href=\"login.php\";</script>";
 ?>
 <html lang="zh-TW">
+
 	<head>
 		<!-- Meta -->
 		<meta charset="utf-8">
@@ -45,7 +48,6 @@
 				-moz-background-size: cover;
 			}
 		</style>
-
 	</head>
 	
     <body>
@@ -92,11 +94,15 @@
 		<!-- END NAVBAR -->		
 		
 		<!-- START  HOME DESIGN -->
+		<!-- <section class="section-top" style="background-image: url(assets/img/bg/section-bg.jpg);  background-size:auto; background-position: center center;"> -->
 		<section class="section-top" style="background-image: url(assets/img/bg/section-bg.jpg);">
 		<div class="overlay">
 			<div class="container">
 					<div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
 						<div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+							<ol class="breadcrumb">
+							  <li><a></a></li>
+							</ol>
 						</div><!-- //.HERO-TEXT -->
 					</div><!--- END COL -->
 				</div><!--- END CONTAINER -->
@@ -104,69 +110,86 @@
 		</section>	
 		<!-- END  HOME DESIGN -->	
 
-		<!-- START CONTACT -->
-		<section class="contact_area section-padding">
-			<div class="container">	
-				<div class="row contact_padding">	
-					<div class="col-md-8 col-sm-12 col-sm-6 col-xs-12 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.6s" data-wow-offset="0">
-						<div class="contact">
-							<h1>登入</h1>
-							<form class="form" name="LoginSys" method="post" action="logincheck.php" onsubmit="return validation();">
-								<div class="row">
-									<div class="form-group col-md-6">
-										<input type="text" name="Account" class="form-control" id="first-name" placeholder="帳號" required="required">
-									</div>
-									<div class="form-group col-md-6">
-										<input type="password" name="Password" class="form-control" id="email" placeholder="密碼" required="required">
-									</div>
-									<div class="form-group col-md-12">
-									   <div class="actions">
-										<input type="submit" value="登入" name="LoginSys" id="submitButton" class="btn-light-bg" title="點此登入!" />
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div><!-- END COL -->
-					<div class="col-md-4 col-sm-4 col-xs-12">
-						<div class="single-address wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.4s" data-wow-offset="0">
-							<div class="media">
-								<div class="media-left">
-									<i class="fa fa-rocket"></i>
-								</div>
-								<div class="media-body text-left">
-									<h2 class="media-heading">TANET/ICS 2022活動地點</h2>
-									<p>324桃園市平鎮區福龍路一段100號</p>
-								</div>
-							</div>
-						</div>
-						<div class="single-address wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="0">
-							<div class="media">
-								<div class="media-left">
-									<i class="fa fa-phone"></i>
-								</div>
-								<div class="media-body text-left">
-									<h2 class="media-heading">致電聯絡</h2>
-									<p>(03)4506333#8131</p>
-								</div>
-							</div>
-						</div>
-						<div class="single-address wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.6s" data-wow-offset="0">
-							<div class="media">
-								<div class="media-left">
-									<i class="fa fa-envelope"></i>
-								</div>
-								<div class="media-body text-left">
-									<h2 class="media-heading">來信聯絡</h2>
-									<p>tanet2022@ntub.edu.tw</p>
-								</div>
-							</div>
-						</div>
-					</div><!-- END COL -->
-				</div><!--- END ROW -->				
-			</div><!--- END CONTAINER -->				
-		</section>
-		<!-- END CONTACT AREA -->	
+		<!-- START FORM -->
+		<form method="post" action="updatedata.php" name="updatedata" id="updatedata">
+			<section class="faq">
+				<div class="" style="margin: 0px 5% auto;">
+					<div class="row">
+						<table class="table">
+							<thead>
+								<tr>
+								<th scope="col">報名編號</th>
+								<th scope="col">姓名</th>
+								<th scope="col">電子信箱</th>
+								<th scope="col">身份別</th>
+								<th scope="col">收據抬頭</th>
+								<th scope="col">統一編號</th>
+								<th scope="col">收據號碼</th>
+								<th scope="col">交易序號</th>
+								<th scope="col">繳費方式</th>
+								<th scope="col">繳費日期</th>
+								<th scope="col">繳費金額</th>
+								<th scope="col">特殊案例</th>
+								<th scope="col">處理</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php 
+										$sql_query_DataID="SELECT * FROM `alltable` WHERE 1";//取得報名資訊ID
+										$DataID_result=mysqli_query($db_link,$sql_query_DataID) or die("Data_result查詢失敗");
+										while($row_DataID=mysqli_fetch_array($DataID_result)){//查出某筆ID
+											echo "<tr>";
+												echo "<th scope='row'>".$row_DataID['_ID']."</th>";
+												$sql_query_PersonalData="SELECT * FROM `personal` WHERE `_ID`='".$row_DataID['personalID']."'";//取得報名資訊ID
+												$PersonalData_result=mysqli_query($db_link,$sql_query_PersonalData) or die("Data_result查詢失敗");
+												while($row_PersonalData=mysqli_fetch_array($PersonalData_result)){//查出PersonalData
+													echo "<td>".$row_PersonalData['Cname']."</td>";
+													echo "<td>".$row_PersonalData['Email']."</td>";
+													echo "<td>".$row_PersonalData['Identity']."</td>";
+													break;
+												}
+												$sql_query_FinanceData="SELECT * FROM `finance` WHERE `_ID`='".$row_DataID['financeID']."'";//取得金融資訊ID
+												$FinanceData_result=mysqli_query($db_link,$sql_query_FinanceData) or die("Data_result查詢失敗");
+												while($row_FinanceData=mysqli_fetch_array($FinanceData_result)){//查出PersonalData
+													echo "<td>".$row_FinanceData['ReceiptHeader']."</td>";
+													echo "<td>".$row_FinanceData['TaxID']."</td>";
+													echo "<td><input type='text' name='' class='form-control' value='".$row_FinanceData['ReceiptID']."'></td>";
+													echo "<td><input type='text' name='' class='form-control' value='".$row_FinanceData['TransactionID']."'></td>";
+													echo "<td>";
+														echo "<select class='form-control' name='Identity'>";
+															echo "<option value='未繳'";
+																if($row_FinanceData['PaymentMethod']=="未繳") echo "selected";
+															echo ">未繳</option>";
+															echo "<option value='匯款'";
+																if($row_FinanceData['PaymentMethod']=="匯款") echo "selected";
+															echo ">匯款</option>";
+															echo "<option value='ATM轉帳'";
+																if($row_FinanceData['PaymentMethod']=="ATM轉帳") echo "selected";
+															echo ">ATM轉帳</option>";
+															echo "<option value='信用卡'";
+																if($row_FinanceData['PaymentMethod']=="信用卡") echo "selected";
+															echo ">信用卡</option>";
+														echo "</select>";
+													echo "</td>";
+													echo "<td>";
+														echo "<input type='date' name='bday' value='".$row_FinanceData['PaymentDate']."'>";
+													echo "</td>";
+													echo "<td><input type='text' name='' class='form-control' value='".$row_FinanceData['PaymentAmount']."'></td>";
+													echo "<td><input type='text' name='' class='form-control' value='".$row_FinanceData['SpecialCase']."'></td>";
+													break;
+												}
+												echo "<td><button type='submit'  form='updatedata' class='btn btn-success'>修正資料</button></td>";
+											echo "</tr>";
+										}
+									?>
+								
+								</tr>
+							</tbody>
+						</table>
+					</div><!--- END ROW -->
+				</div><!--- END CONTAINER -->
+			</section>
+		<!-- END FORM -->
 	
 		<!-- START FOOTER TOP-->
 		<section class="footer-top">
@@ -179,7 +202,7 @@
 								<p>本年度大會主題定為「元宇宙時代之智慧創新科技」。此外，本年度將也包含近年來關注的主題，包含５Ｇ行動通訊、物聯網、人工智慧、大數據、雲端技術、資訊安全、個人資料保護、數位創新學習、數位基礎設施等，期盼透過此研討會邀集產官學界的專家學者、台灣區網的資訊服務人員、網路從業人員的互動，藉由聚焦上述議題與廣泛之討論，提升資訊相關產業能量，探討建構一個智慧、創新且安全資訊環境。</p>
 								<div class="footer_contact">
 									<ul>
-										<li><i class="fa fa-phone"></i> 聯絡窗口(張雅媛 小姐) -  (03)4506333#8131</li>
+										<li><i class="fa fa-phone"></i> 聯絡窗口（張雅媛 小姐） -  （03）4506333#8131</li>
 										<li><i class="fa fa-envelope"></i> tanet2022@ntub.edu.tw</li>
 										<li><i class="fa fa-rocket"></i> 國立臺北商業大學平鎮校區</li>
 									</ul>

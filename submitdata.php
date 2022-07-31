@@ -94,7 +94,8 @@
 		// echo $Seminar_LastID;
 		// echo $Finance_LastID;
 		//加入Alltable
-		$sql_query_InsertAlltable="INSERT INTO `alltable`(`accountid`, `financeID`, `personalID`, `seminarID`) VALUES ('','$Finance_LastID','$Personal_LastID','$Seminar_LastID')";
+		$sql_query_InsertAlltable="INSERT INTO `alltable`(`financeID`, `personalID`, `seminarID`) VALUES ('$Finance_LastID','$Personal_LastID','$Seminar_LastID')";
+		echo $sql_query_InsertAlltable;
 		$InsertAlltable_result=mysqli_query($db_link,$sql_query_InsertAlltable) or die("InsertAlltable查詢失敗");
 
 		$Alltable_LastID="-1";
@@ -106,7 +107,7 @@
 		}
 	}
 	else
-		echo"<script  language=\"JavaScript\">alert('請由正確路徑進入');location.href=\"registration.php\";</script>";
+		echo"<script  language=\"JavaScript\">alert('請由正確路徑進入');location.href=\"index.php\";</script>";
 ?>
 <!DOCTYPE html>
 <html lang="zh-TW">
@@ -178,8 +179,15 @@
 						 <ul class="nav navbar-nav navbar-right">
 							<li><a href="https://tanet2022.ntub.edu.tw/" target="_blank">研討會首頁</a></li>
 							<li><a href="https://tanetsys.mcu.edu.tw/index.php/tanet2022/tanet2022" target="_blank">投稿系統</a></li>
-							<li><a href="registration.php">報名研討會</a></li>
-							<li><a href="login.php">後臺登入</a></li>
+							<li><a href="index.php">報名研討會</a></li>
+							<?php
+								if(isset($_SESSION['tanet2022_Islogin'])){
+									echo"<li><a href='backstage.php'>後臺管理</a></li>";
+									echo"<li><a href='logout.php'>登出</a></li>";
+								}
+								else
+									echo"<li><a href='login.php'>後臺登入</a></li>";
+							?>
 						</ul>
 					</nav>
                 </div> 
@@ -482,8 +490,15 @@
 								<ul>
 									<li><a href="https://tanet2022.ntub.edu.tw/" target="_blank">研討會首頁</a></li>
 									<li><a href="https://tanetsys.mcu.edu.tw/index.php/tanet2022/tanet2022" target="_blank">投稿系統</a></li>
-									<li><a href="registration.php">報名研討會</a></li>
-									<li><a href="login.php">後臺登入</a></li>
+									<li><a href="index.php">報名研討會</a></li>
+									<?php
+										if(isset($_SESSION['tanet2022_Islogin'])){
+											echo"<li><a href='backstage.php'>後臺管理</a></li>";
+											echo"<li><a href='logout.php'>登出</a></li>";
+										}
+										else
+											echo"<li><a href='login.php'>後臺登入</a></li>";
+									?>
 								</ul>
 							</div>
 						</div><!--- END COL -->		
