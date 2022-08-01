@@ -341,8 +341,8 @@
 									echo "<td style='text-align:center;'>葷".$Lunch_D1_葷."<br>素".$Lunch_D1_素."<br>不需要".$Lunch_D1_不需要."</td>";
 									echo "<td style='text-align:center;'>葷".$Lunch_D2_葷."<br>素".$Lunch_D2_素."<br>不需要".$Lunch_D2_不需要."</td>";
 									echo "<td style='text-align:center;'>葷".$Lunch_D3_葷."<br>素".$Lunch_D3_素."<br>不需要".$Lunch_D3_不需要."</td>";
-									echo "<td style='text-align:center;'>葷".$Dinner_D1_葷."<br>素".$Dinner_D1_素."<br>不需要".$Dinner _D1_不需要."</td>";
-									echo "<td style='text-align:center;'>葷".$Dinner_D2_葷."<br>素".$Dinner_D2_素."<br>不需要".$Dinner _D2_不需要."</td>";
+									echo "<td style='text-align:center;'>葷".$Dinner_D1_葷."<br>素".$Dinner_D1_素."<br>不需要".$Dinner_D1_不需要."</td>";
+									echo "<td style='text-align:center;'>葷".$Dinner_D2_葷."<br>素".$Dinner_D2_素."<br>不需要".$Dinner_D2_不需要."</td>";
 									echo "</tr>";
 								?>	
 							</tbody>
