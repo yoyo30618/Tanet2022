@@ -23,7 +23,7 @@
 		if(isset($_POST['PapersID'])) $PapersID=$_POST['PapersID'];	
 		$Transportation="";
 		if(isset($_POST['Transportation'])) $Transportation=$_POST['Transportation'];
-		echo $Transportation."-";
+		//echo $Transportation."-";
 		$CarLicense="";
 		if(isset($_POST['CarLicense'])) $CarLicense=$_POST['CarLicense'];
 		$ShuttleBus_D1="";
@@ -52,6 +52,32 @@
 		if(isset($_POST['ReceiptHeader'])) $ReceiptHeader=$_POST['ReceiptHeader'];	
 		$TaxID="";
 		if(isset($_POST['TaxID'])) $TaxID=$_POST['TaxID'];
+		/*修正特殊字符*/
+		$Cname=htmlspecialchars($Cname);
+		$Unit=htmlspecialchars($Unit);
+		$Identity=htmlspecialchars($Identity);
+		$Job=htmlspecialchars($Job);
+		$Email=htmlspecialchars($Email);
+		$Phone=htmlspecialchars($Phone);
+		$PapersAmount=htmlspecialchars($PapersAmount);
+		$PapersAmount_ChiefEditor=htmlspecialchars($PapersAmount_ChiefEditor);
+		$PapersID=htmlspecialchars($PapersID);
+		$Transportation=htmlspecialchars($Transportation);
+		$CarLicense=htmlspecialchars($CarLicense);
+		$ShuttleBus_D1=htmlspecialchars($ShuttleBus_D1);
+		$ShuttleBus_D2=htmlspecialchars($ShuttleBus_D2);
+		$ShuttleBus_D3=htmlspecialchars($ShuttleBus_D3);
+		$Lunch_D1=htmlspecialchars($Lunch_D1);
+		$Dinner_D1=htmlspecialchars($Dinner_D1);
+		$Lunch_D2=htmlspecialchars($Lunch_D2);
+		$Dinner_D2=htmlspecialchars($Dinner_D2);
+		$Lunch_D3=htmlspecialchars($Lunch_D3);
+		$DinnerCompanion_Omnivorous=htmlspecialchars($DinnerCompanion_Omnivorous);
+		$DinnerCompanion_Vegetarian=htmlspecialchars($DinnerCompanion_Vegetarian);
+		$Notice=htmlspecialchars($Notice);
+		$ReceiptHeader=htmlspecialchars($ReceiptHeader);
+		$TaxID=htmlspecialchars($TaxID);
+		
 		//SELECT LAST_INSERT_ID();取得上一筆加入編號
 		$Personal_LastID=0;
 		$Seminar_LastID=0;
@@ -60,6 +86,7 @@
 		$sql_query_InsertPersonal="INSERT INTO `personal`" ;
 		$sql_query_InsertPersonal=$sql_query_InsertPersonal."(`Cname`, `Unit`, `Identity`, `Job`, `Email`, `Phone`, `PapersAmount`, `PapersAmount_ChiefEditor`, `PapersID`) VALUES ";
 		$sql_query_InsertPersonal=$sql_query_InsertPersonal."('$Cname','$Unit','$Identity','$Job','$Email','$Phone','$PapersAmount','$PapersAmount_ChiefEditor','$PapersID')";
+		echo $sql_query_InsertPersonal;
 		$InsertPersonal_result=mysqli_query($db_link,$sql_query_InsertPersonal) or die("查詢失敗");
 		$sql_query_LastID="SELECT LAST_INSERT_ID() AS LAST_ID";//取得剛剛加入ID
 		$LastID_result=mysqli_query($db_link,$sql_query_LastID) or die("InsertPersonal查詢失敗");//上一筆加入的ID
