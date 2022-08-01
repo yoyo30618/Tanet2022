@@ -313,7 +313,7 @@
 									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `Dinner_D1`='葷' THEN 1 END) AS Dinner_D1_葷 ,COUNT(CASE WHEN `Dinner_D1`='素' THEN 1 END) AS Dinner_D1_素 ,COUNT(CASE WHEN `Dinner_D1`='不需要' THEN 1 END) AS Dinner_D1_不需要,";
 									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `Dinner_D2`='葷' THEN 1 END) AS Dinner_D2_葷 ,COUNT(CASE WHEN `Dinner_D2`='素' THEN 1 END) AS Dinner_D2_素 ,COUNT(CASE WHEN `Dinner_D2`='不需要' THEN 1 END) AS Dinner_D2_不需要";
 									$sql_query_Data=$sql_query_Data." FROM `seminar` WHERE 1";
-									echo $sql_query_Data;
+									//echo $sql_query_Data;
 									$DataID_result=mysqli_query($db_link,$sql_query_Data) or die("sql_query_Data查詢失敗");
 									while($rowData=mysqli_fetch_array($DataID_result)){
 										$Lunch_D1_葷=$rowData['Lunch_D1_葷'];
