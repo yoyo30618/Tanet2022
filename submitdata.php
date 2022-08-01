@@ -209,7 +209,12 @@
 							<li><a href="index.php">報名研討會</a></li>
 							<?php
 								if(isset($_SESSION['tanet2022_Islogin'])){
-									echo"<li><a href='backstage.php'>後臺管理</a></li>";
+									echo"<li><a href='backstage_finance.php'>後臺管理</a>";
+										echo "<ul class='sub-menu'>";
+											echo "<li><a href='backstage_finance.php'>金融資訊</a></li>";
+											echo "<li><a href='backstage_seminar.php'>便當與接駁車</a></li>";
+										echo "</ul>";
+									echo "</li>";
 									echo"<li><a href='logout.php'>登出</a></li>";
 								}
 								else
@@ -356,21 +361,36 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text" id="basic-addon1">12／15（四）接駁車班次</span>
 									</div>
-									<input type="text" disabled="disabled" value="<?php echo $ShuttleBus_D1;?>" name="ShuttleBus_D1" class="form-control" placeholder="請輸入12／15（四）接駁車班次" aria-label="Username" aria-describedby="basic-addon1">
+									<select class="form-control" name="ShuttleBus_D1">
+										<option value="不需要" disabled="disabled" <?php if($_POST['ShuttleBus_D1']=='不需要')echo "selected";?>>不需要</option>
+										<option value="班次一" disabled="disabled" <?php if($_POST['ShuttleBus_D1']=='班次一')echo "selected";?>>班次一</option>
+										<option value="班次二" disabled="disabled" <?php if($_POST['ShuttleBus_D1']=='班次二')echo "selected";?>>班次二</option>
+										<option value="班次三" disabled="disabled" <?php if($_POST['ShuttleBus_D1']=='班次三')echo "selected";?>>班次三</option>
+									</select>
 								</div>
 								<br>
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
 										<span class="input-group-text" id="basic-addon1">12／16（五）接駁車班次</span>
 									</div>
-									<input type="text" disabled="disabled" value="<?php echo $ShuttleBus_D2;?>" name="ShuttleBus_D2" class="form-control" placeholder="請輸入12／16（五）接駁車班次" aria-label="Username" aria-describedby="basic-addon1">
+									<select class="form-control" name="ShuttleBus_D2">
+										<option value="不需要" disabled="disabled" <?php if($_POST['ShuttleBus_D2']=='不需要')echo "selected";?>>不需要</option>
+										<option value="班次一" disabled="disabled" <?php if($_POST['ShuttleBus_D2']=='班次一')echo "selected";?>>班次一</option>
+										<option value="班次二" disabled="disabled" <?php if($_POST['ShuttleBus_D2']=='班次二')echo "selected";?>>班次二</option>
+										<option value="班次三" disabled="disabled" <?php if($_POST['ShuttleBus_D2']=='班次三')echo "selected";?>>班次三</option>
+									</select>
 								</div>
 								<br>
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
 										<span class="input-group-text" id="basic-addon1">12／17（六）接駁車班次</span>
 									</div>
-									<input type="text" disabled="disabled" value="<?php echo $ShuttleBus_D3;?>" name="ShuttleBus_D3" class="form-control" placeholder="請輸入12／17（六）接駁車班次" aria-label="Username" aria-describedby="basic-addon1">
+									<select class="form-control" name="ShuttleBus_D3">
+										<option value="不需要" disabled="disabled" <?php if($_POST['ShuttleBus_D3']=='不需要')echo "selected";?>>不需要</option>
+										<option value="班次一" disabled="disabled" <?php if($_POST['ShuttleBus_D3']=='班次一')echo "selected";?>>班次一</option>
+										<option value="班次二" disabled="disabled" <?php if($_POST['ShuttleBus_D3']=='班次二')echo "selected";?>>班次二</option>
+										<option value="班次三" disabled="disabled" <?php if($_POST['ShuttleBus_D3']=='班次三')echo "selected";?>>班次三</option>
+									</select>
 								</div>
 								<br>
 								<table class="table">
@@ -520,7 +540,7 @@
 									<li><a href="index.php">報名研討會</a></li>
 									<?php
 										if(isset($_SESSION['tanet2022_Islogin'])){
-											echo"<li><a href='backstage.php'>後臺管理</a></li>";
+											echo"<li><a href='backstage_finance.php'>後臺管理</a></li>";
 											echo"<li><a href='logout.php'>登出</a></li>";
 										}
 										else

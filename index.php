@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+	<?php
+		session_start();//開啟session
+	?>
 
 	<head>
 		<!-- Meta -->
@@ -71,7 +74,12 @@
 							<li><a href="index.php">報名研討會</a></li>
 							<?php
 								if(isset($_SESSION['tanet2022_Islogin'])){
-									echo"<li><a href='backstage.php'>後臺管理</a></li>";
+									echo"<li><a href='backstage_finance.php'>後臺管理</a>";
+										echo "<ul class='sub-menu'>";
+											echo "<li><a href='backstage_finance.php'>金融資訊</a></li>";
+											echo "<li><a href='backstage_seminar.php'>便當與接駁車</a></li>";
+										echo "</ul>";
+									echo "</li>";
 									echo"<li><a href='logout.php'>登出</a></li>";
 								}
 								else
@@ -196,7 +204,6 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text" id="basic-addon1">　　　　　　　 交通方式</span>
 									</div>
-									
 									<select class="form-control" name="Transportation">
 										<option value="自行開車" selected>自行開車</option>
 										<option value="搭乘大會接駁車">搭乘大會接駁車</option>
@@ -215,21 +222,36 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text" id="basic-addon1">12／15（四）接駁車班次</span>
 									</div>
-									<input type="text" name="ShuttleBus_D1" class="form-control" placeholder="請輸入12／15（四）接駁車班次" aria-label="Username" aria-describedby="basic-addon1">
+									<select class="form-control" name="ShuttleBus_D1">
+										<option value="不需要" selected>不需要</option>
+										<option value="班次一" >班次一</option>
+										<option value="班次二">班次二</option>
+										<option value="班次三">班次三</option>
+									</select>
 								</div>
 								<br>
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
 										<span class="input-group-text" id="basic-addon1">12／16（五）接駁車班次</span>
 									</div>
-									<input type="text" name="ShuttleBus_D2" class="form-control" placeholder="請輸入12／16（五）接駁車班次" aria-label="Username" aria-describedby="basic-addon1">
+									<select class="form-control" name="ShuttleBus_D2">
+										<option value="不需要" selected>不需要</option>
+										<option value="班次一" >班次一</option>
+										<option value="班次二">班次二</option>
+										<option value="班次三">班次三</option>
+									</select>
 								</div>
 								<br>
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
 										<span class="input-group-text" id="basic-addon1">12／17（六）接駁車班次</span>
 									</div>
-									<input type="text" name="ShuttleBus_D3" class="form-control" placeholder="請輸入12／17（六）接駁車班次" aria-label="Username" aria-describedby="basic-addon1">
+									<select class="form-control" name="ShuttleBus_D3">
+										<option value="不需要" selected>不需要</option>
+										<option value="班次一" >班次一</option>
+										<option value="班次二">班次二</option>
+										<option value="班次三">班次三</option>
+									</select>
 								</div>
 								<br>
 								<table class="table">
@@ -379,7 +401,7 @@
 									<li><a href="index.php">報名研討會</a></li>
 									<?php
 										if(isset($_SESSION['tanet2022_Islogin'])){
-											echo"<li><a href='backstage.php'>後臺管理</a></li>";
+											echo"<li><a href='backstage_finance.php'>後臺管理</a></li>";
 											echo"<li><a href='logout.php'>登出</a></li>";
 										}
 										else

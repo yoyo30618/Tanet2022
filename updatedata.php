@@ -22,7 +22,7 @@
 			// echo $sql_query_UpdateFinance."<br>";
 			$UpdateFinance_result=mysqli_query($db_link,$sql_query_UpdateFinance) or die("FinanceData查詢失敗");
 		}
-		echo"<script  language=\"JavaScript\">location.href=\"backstage.php\";</script>";
+		echo"<script  language=\"JavaScript\">location.href=\"backstage_finance.php\";</script>";
 	}
 	else{
 		echo"<script  language=\"JavaScript\">alert('請由正確路徑進入');location.href=\"index.php\";</script>";

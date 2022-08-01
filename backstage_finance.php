@@ -80,7 +80,12 @@
 							<li><a href="index.php">報名研討會</a></li>
 							<?php
 								if(isset($_SESSION['tanet2022_Islogin'])){
-									echo"<li><a href='backstage.php'>後臺管理</a></li>";
+									echo"<li><a href='backstage_finance.php'>後臺管理</a>";
+										echo "<ul class='sub-menu'>";
+											echo "<li><a href='backstage_finance.php'>金融資訊</a></li>";
+											echo "<li><a href='backstage_seminar.php'>便當與接駁車</a></li>";
+										echo "</ul>";
+									echo "</li>";
 									echo"<li><a href='logout.php'>登出</a></li>";
 								}
 								else
@@ -122,8 +127,8 @@
 								<th scope="col">姓名</th>
 								<th scope="col">電子信箱</th>
 								<th scope="col">身份別</th>
-								<th scope="col">收據抬頭</th>
-								<th scope="col">統一編號</th>
+								<!-- <th scope="col">收據抬頭</th>
+								<th scope="col">統一編號</th> -->
 								<th scope="col">收據號碼</th>
 								<th scope="col">交易序號</th>
 								<th scope="col">繳費方式</th>
@@ -141,60 +146,58 @@
 									</td>
 								</tr>
 								<?php 
-										$sql_query_DataID="SELECT * FROM `alltable` WHERE 1";//取得報名資訊ID
-										$DataID_result=mysqli_query($db_link,$sql_query_DataID) or die("Data_result查詢失敗");
-										while($row_DataID=mysqli_fetch_array($DataID_result)){//查出某筆ID
-											echo "<tr>";
-												echo "<th scope='row'>".$row_DataID['_ID']."</th>";
-												$sql_query_PersonalData="SELECT * FROM `personal` WHERE `_ID`='".$row_DataID['personalID']."'";//取得報名資訊ID
-												$PersonalData_result=mysqli_query($db_link,$sql_query_PersonalData) or die("Data_result查詢失敗");
-												while($row_PersonalData=mysqli_fetch_array($PersonalData_result)){//查出PersonalData
-													echo "<td>".$row_PersonalData['Cname']."</td>";
-													echo "<td>".$row_PersonalData['Email']."</td>";
-													echo "<td>".$row_PersonalData['Identity']."</td>";
-													break;
-												}
-												$sql_query_FinanceData="SELECT * FROM `finance` WHERE `_ID`='".$row_DataID['financeID']."'";//取得金融資訊ID
-												$FinanceData_result=mysqli_query($db_link,$sql_query_FinanceData) or die("Data_result查詢失敗");
-												while($row_FinanceData=mysqli_fetch_array($FinanceData_result)){//查出PersonalData
-													echo "<td>".$row_FinanceData['ReceiptHeader']."</td>";
-													echo "<td>".$row_FinanceData['TaxID']."</td>";
-													echo "<td><input type='text' name='".$row_FinanceData['_ID']."_ReceiptID' class='form-control' value='".$row_FinanceData['ReceiptID']."'></td>";
-													echo "<td><input type='text' name='".$row_FinanceData['_ID']."_TransactionID' class='form-control' value='".$row_FinanceData['TransactionID']."'></td>";
-													echo "<td>";
-														echo "<select class='form-control' name='".$row_FinanceData['_ID']."_PaymentMethod'>";
-															echo "<option value='未繳'";
-																if($row_FinanceData['PaymentMethod']=="未繳") echo "selected";
-															echo ">未繳</option>";
-															echo "<option value='匯款'";
-																if($row_FinanceData['PaymentMethod']=="匯款") echo "selected";
-															echo ">匯款</option>";
-															echo "<option value='ATM轉帳'";
-																if($row_FinanceData['PaymentMethod']=="ATM轉帳") echo "selected";
-															echo ">ATM轉帳</option>";
-															echo "<option value='信用卡'";
-																if($row_FinanceData['PaymentMethod']=="信用卡") echo "selected";
-															echo ">信用卡</option>";
-														echo "</select>";
-													echo "</td>";
-													echo "<td>";
-														echo "<input type='date' name='".$row_FinanceData['_ID']."_PaymentDate' value='".$row_FinanceData['PaymentDate']."'>";
-													echo "</td>";
-													echo "<td><input type='text' name='".$row_FinanceData['_ID']."_PaymentAmount' class='form-control' value='".$row_FinanceData['PaymentAmount']."'></td>";
-													echo "<td><input type='text' name='".$row_FinanceData['_ID']."_SpecialCase' class='form-control' value='".$row_FinanceData['SpecialCase']."'></td>";
-													echo "<td>";
-														echo "<input type='checkbox' name='".$row_FinanceData['_ID']."_LetterNotification' class='form-check-input'";
-														if($row_FinanceData['LetterNotification']==1) echo 'checked';
-														echo">";
-													echo "</td>";
-													break;
-												}
-												echo "<td><button type='submit'  form='updatedata' class='btn btn-success' name='updatedata' value='".$row_FinanceData['_ID']."'>更新資料</button></td>";
-											echo "</tr>";
-										}
-									?>
-								
-								</tr>
+									$sql_query_DataID="SELECT * FROM `alltable` WHERE 1";//取得報名資訊ID
+									$DataID_result=mysqli_query($db_link,$sql_query_DataID) or die("Data_result查詢失敗");
+									while($row_DataID=mysqli_fetch_array($DataID_result)){//查出某筆ID
+										echo "<tr>";
+											echo "<th scope='row'>".$row_DataID['_ID']."</th>";
+											$sql_query_PersonalData="SELECT * FROM `personal` WHERE `_ID`='".$row_DataID['personalID']."'";//取得報名資訊ID
+											$PersonalData_result=mysqli_query($db_link,$sql_query_PersonalData) or die("Data_result查詢失敗");
+											while($row_PersonalData=mysqli_fetch_array($PersonalData_result)){//查出PersonalData
+												echo "<td>".$row_PersonalData['Cname']."</td>";
+												echo "<td>".$row_PersonalData['Email']."</td>";
+												echo "<td>".$row_PersonalData['Identity']."</td>";
+												break;
+											}
+											$sql_query_FinanceData="SELECT * FROM `finance` WHERE `_ID`='".$row_DataID['financeID']."'";//取得金融資訊ID
+											$FinanceData_result=mysqli_query($db_link,$sql_query_FinanceData) or die("Data_result查詢失敗");
+											while($row_FinanceData=mysqli_fetch_array($FinanceData_result)){//查出PersonalData
+												// echo "<td>".$row_FinanceData['ReceiptHeader']."</td>";
+												// echo "<td>".$row_FinanceData['TaxID']."</td>";
+												echo "<td><input type='text' name='".$row_FinanceData['_ID']."_ReceiptID' class='form-control' value='".$row_FinanceData['ReceiptID']."'></td>";
+												echo "<td><input type='text' name='".$row_FinanceData['_ID']."_TransactionID' class='form-control' value='".$row_FinanceData['TransactionID']."'></td>";
+												echo "<td>";
+													echo "<select class='form-control' name='".$row_FinanceData['_ID']."_PaymentMethod'>";
+														echo "<option value='未繳'";
+															if($row_FinanceData['PaymentMethod']=="未繳") echo "selected";
+														echo ">未繳</option>";
+														echo "<option value='匯款'";
+															if($row_FinanceData['PaymentMethod']=="匯款") echo "selected";
+														echo ">匯款</option>";
+														echo "<option value='ATM轉帳'";
+															if($row_FinanceData['PaymentMethod']=="ATM轉帳") echo "selected";
+														echo ">ATM轉帳</option>";
+														echo "<option value='信用卡'";
+															if($row_FinanceData['PaymentMethod']=="信用卡") echo "selected";
+														echo ">信用卡</option>";
+													echo "</select>";
+												echo "</td>";
+												echo "<td>";
+													echo "<input type='date' name='".$row_FinanceData['_ID']."_PaymentDate' value='".$row_FinanceData['PaymentDate']."'>";
+												echo "</td>";
+												echo "<td><input type='number' name='".$row_FinanceData['_ID']."_PaymentAmount' class='form-control' value='".$row_FinanceData['PaymentAmount']."'></td>";
+												echo "<td><input type='text' name='".$row_FinanceData['_ID']."_SpecialCase' class='form-control' value='".$row_FinanceData['SpecialCase']."'></td>";
+												echo "<td>";
+													echo "<input type='checkbox' name='".$row_FinanceData['_ID']."_LetterNotification' class='form-check-input'";
+													if($row_FinanceData['LetterNotification']==1) echo 'checked';
+													echo">";
+												echo "</td>";
+												break;
+											}
+											echo "<td><button type='submit'  form='updatedata' class='btn btn-success' name='updatedata' value='".$row_FinanceData['_ID']."'>更新資料</button></td>";
+										echo "</tr>";
+									}
+								?>
 							</tbody>
 						</table>
 					</div><!--- END ROW -->
@@ -229,7 +232,7 @@
 									<li><a href="index.php">報名研討會</a></li>
 									<?php
 										if(isset($_SESSION['tanet2022_Islogin'])){
-											echo"<li><a href='backstage.php'>後臺管理</a></li>";
+											echo"<li><a href='backstage_finance.php'>後臺管理</a></li>";
 											echo"<li><a href='logout.php'>登出</a></li>";
 										}
 										else

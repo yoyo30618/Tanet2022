@@ -3,7 +3,7 @@
 	session_start();//開啟session
 	include_once("conn_mysql.php");
 	if(isset($_SESSION['tanet2022_Islogin'])){
-		echo"<script  language=\"JavaScript\">location.href=\"backstage.php\";</script>";
+		echo"<script  language=\"JavaScript\">location.href=\"backstage_finance.php\";</script>";
 	}
 ?>
 <html lang="zh-TW">
@@ -78,7 +78,12 @@
 							<li><a href="index.php">報名研討會</a></li>
 							<?php
 								if(isset($_SESSION['tanet2022_Islogin'])){
-									echo"<li><a href='backstage.php'>後臺管理</a></li>";
+									echo"<li><a href='backstage_finance.php'>後臺管理</a>";
+										echo "<ul class='sub-menu'>";
+											echo "<li><a href='backstage_finance.php'>金融資訊</a></li>";
+											echo "<li><a href='backstage_seminar.php'>便當與接駁車</a></li>";
+										echo "</ul>";
+									echo "</li>";
 									echo"<li><a href='logout.php'>登出</a></li>";
 								}
 								else
@@ -195,7 +200,7 @@
 									<li><a href="index.php">報名研討會</a></li>
 									<?php
 										if(isset($_SESSION['tanet2022_Islogin'])){
-											echo"<li><a href='backstage.php'>後臺管理</a></li>";
+											echo"<li><a href='backstage_finance.php'>後臺管理</a></li>";
 											echo"<li><a href='logout.php'>登出</a></li>";
 										}
 										else

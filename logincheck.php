@@ -17,7 +17,7 @@
 				$_SESSION['tanet2022_Islogin']=1;
 				$_SESSION['tanet2022_Status']=$row_login['Status'];
 				$IsLogin=1;
-				echo"<script  language=\"JavaScript\">alert('登入成功');location.href=\"backstage.php\";</script>";
+				echo"<script  language=\"JavaScript\">alert('登入成功');location.href=\"backstage_finance.php\";</script>";
 				break;
 			}
 		}
