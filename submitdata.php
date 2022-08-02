@@ -215,6 +215,7 @@
 							<li><a href="https://tanet2022.ntub.edu.tw/" target="_blank">研討會首頁</a></li>
 							<li><a href="https://tanetsys.mcu.edu.tw/index.php/tanet2022/tanet2022" target="_blank">投稿系統</a></li>
 							<li><a href="index.php">報名研討會</a></li>
+							<li><a href="Information.php">報名狀態查詢</a></li>
 							<?php
 								if(isset($_SESSION['tanet2022_Islogin'])){
 									echo"<li><a href='backstage_finance.php'>後臺管理</a>";
@@ -546,6 +547,7 @@
 									<li><a href="https://tanet2022.ntub.edu.tw/" target="_blank">研討會首頁</a></li>
 									<li><a href="https://tanetsys.mcu.edu.tw/index.php/tanet2022/tanet2022" target="_blank">投稿系統</a></li>
 									<li><a href="index.php">報名研討會</a></li>
+									<li><a href="Information.php">報名狀態查詢</a></li>
 									<?php
 										if(isset($_SESSION['tanet2022_Islogin'])){
 											echo"<li><a href='backstage_finance.php'>後臺管理</a></li>";
