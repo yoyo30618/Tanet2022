@@ -78,6 +78,7 @@
 							<li><a href="https://tanet2022.ntub.edu.tw/" target="_blank">研討會首頁</a></li>
 							<li><a href="https://tanetsys.mcu.edu.tw/index.php/tanet2022/tanet2022" target="_blank">投稿系統</a></li>
 							<li><a href="index.php">報名研討會</a></li>
+							<li><a href="Information.php">報名狀態查詢</a></li>
 							<?php
 								if(isset($_SESSION['tanet2022_Islogin'])){
 									echo"<li><a href='backstage_finance.php'>後臺管理</a>";
@@ -170,7 +171,7 @@
 											}
 											else{//有SeminarID後查詢
 												while($row_DataID=mysqli_fetch_array($DataID_result)){//符合該筆ID的所有資料													
-													echo "<td style='text-align:center;'>".$row_DataID['_ID']."</td>";//第一天午餐																	
+													echo "<td style='text-align:center;'><a href='Information.php?search_ID=".$row_DataID['_ID']."' target='_blank'>".$row_DataID['_ID']."</a></td>";																	
 													echo "<td style='text-align:center;'>".$row_DataID['Lunch_D1']."</td>";//第一天午餐													
 													echo "<td style='text-align:center;'>".$row_DataID['Lunch_D2']."</td>";//第二天午餐													
 													echo "<td style='text-align:center;'>".$row_DataID['Lunch_D3']."</td>";//第三天午餐													
@@ -213,7 +214,7 @@
 														echo "<td></td>";
 														echo "<td></td>";
 													}
-													echo "<td style='text-align:center;'>".$row_DataID['_ID']."</td>";
+													echo "<td style='text-align:center;'><a href='Information.php?search_ID=".$row_DataID['_ID']."' target='_blank'>".$row_DataID['_ID']."</a></td>";		
 													echo "<td style='text-align:center;'>".$row_DataID['Lunch_D1']."</td>";//第一天午餐													
 													echo "<td style='text-align:center;'>".$row_DataID['Lunch_D2']."</td>";//第二天午餐													
 													echo "<td style='text-align:center;'>".$row_DataID['Lunch_D3']."</td>";//第三天午餐													
@@ -258,7 +259,7 @@
 									<th scope="col" colspan="3" style="text-align:center;">午餐</th>
 									<th scope="col" colspan="2" style="text-align:center;">晚餐</th>
 									<th scope="col" rowspan="2" style="text-align:center;">晚宴攜伴</th>
-									<th scope="col" rowspan="2" style="text-align:center;">交通方式</th>
+									<th scope="col" colspan="3" style="text-align:center;">交通方式</th>
 								</tr>
 								<tr>
 									<th scope="col" style="text-align:center;">12/15(四)</th>
@@ -266,6 +267,9 @@
 									<th scope="col" style="text-align:center;">12/17(六)</th>
 									<th scope="col" style="text-align:center;">12/15(四)</th>
 									<th scope="col" style="text-align:center;">12/16(五)</th>
+									<th scope="col" style="text-align:center;">12/15(四)</th>
+									<th scope="col" style="text-align:center;">12/16(五)</th>
+									<th scope="col" style="text-align:center;">12/17(六)</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -292,7 +296,21 @@
 									$Dinner_D2_葷=0;
 									$Dinner_D2_素=0;
 									$Dinner_D2_不需要=0;
-									
+									$DinnerCompanion_Omnivorous=0;
+									$DinnerCompanion_Vegetarian=0;
+									$ShuttleBus_D1_不需要=0;
+									$ShuttleBus_D1_班次一=0;
+									$ShuttleBus_D1_班次二=0;
+									$ShuttleBus_D1_班次三=0;
+									$ShuttleBus_D2_不需要=0;
+									$ShuttleBus_D2_班次一=0;
+									$ShuttleBus_D2_班次二=0;
+									$ShuttleBus_D2_班次三=0;
+									$ShuttleBus_D3_不需要=0;
+									$ShuttleBus_D3_班次一=0;
+									$ShuttleBus_D3_班次二=0;
+									$ShuttleBus_D3_班次三=0;
+
 									$sql_query_Data="SELECT COUNT(*) AS Cnt_Register FROM alltable";
 									$DataID_result=mysqli_query($db_link,$sql_query_Data) or die("sql_query_Data查詢失敗");
 									while($rowData=mysqli_fetch_array($DataID_result)){
@@ -311,7 +329,11 @@
 									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `Lunch_D2`='葷' THEN 1 END) AS Lunch_D2_葷 ,COUNT(CASE WHEN `Lunch_D2`='素' THEN 1 END) AS Lunch_D2_素 ,COUNT(CASE WHEN `Lunch_D2`='不需要' THEN 1 END) AS Lunch_D2_不需要,";
 									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `Lunch_D3`='葷' THEN 1 END) AS Lunch_D3_葷 ,COUNT(CASE WHEN `Lunch_D3`='素' THEN 1 END) AS Lunch_D3_素 ,COUNT(CASE WHEN `Lunch_D3`='不需要' THEN 1 END) AS Lunch_D3_不需要,";
 									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `Dinner_D1`='葷' THEN 1 END) AS Dinner_D1_葷 ,COUNT(CASE WHEN `Dinner_D1`='素' THEN 1 END) AS Dinner_D1_素 ,COUNT(CASE WHEN `Dinner_D1`='不需要' THEN 1 END) AS Dinner_D1_不需要,";
-									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `Dinner_D2`='葷' THEN 1 END) AS Dinner_D2_葷 ,COUNT(CASE WHEN `Dinner_D2`='素' THEN 1 END) AS Dinner_D2_素 ,COUNT(CASE WHEN `Dinner_D2`='不需要' THEN 1 END) AS Dinner_D2_不需要";
+									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `Dinner_D2`='葷' THEN 1 END) AS Dinner_D2_葷 ,COUNT(CASE WHEN `Dinner_D2`='素' THEN 1 END) AS Dinner_D2_素 ,COUNT(CASE WHEN `Dinner_D2`='不需要' THEN 1 END) AS Dinner_D2_不需要,";
+									$sql_query_Data=$sql_query_Data."SUM(`DinnerCompanion_Omnivorous`) AS DinnerCompanion_Omnivorous ,SUM(`DinnerCompanion_Vegetarian`) AS DinnerCompanion_Vegetarian,";
+									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `ShuttleBus_D1`='不需要' THEN 1 END) AS ShuttleBus_D1_不需要 ,COUNT(CASE WHEN `ShuttleBus_D1`='班次一' THEN 1 END) AS ShuttleBus_D1_班次一 ,COUNT(CASE WHEN `ShuttleBus_D1`='班次二' THEN 1 END) AS ShuttleBus_D1_班次二,COUNT(CASE WHEN `ShuttleBus_D1`='班次三' THEN 1 END) AS ShuttleBus_D1_班次三,";
+									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `ShuttleBus_D2`='不需要' THEN 1 END) AS ShuttleBus_D2_不需要 ,COUNT(CASE WHEN `ShuttleBus_D2`='班次一' THEN 1 END) AS ShuttleBus_D2_班次一 ,COUNT(CASE WHEN `ShuttleBus_D2`='班次二' THEN 1 END) AS ShuttleBus_D2_班次二,COUNT(CASE WHEN `ShuttleBus_D2`='班次三' THEN 1 END) AS ShuttleBus_D2_班次三,";
+									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `ShuttleBus_D3`='不需要' THEN 1 END) AS ShuttleBus_D3_不需要 ,COUNT(CASE WHEN `ShuttleBus_D3`='班次一' THEN 1 END) AS ShuttleBus_D3_班次一 ,COUNT(CASE WHEN `ShuttleBus_D3`='班次二' THEN 1 END) AS ShuttleBus_D3_班次二,COUNT(CASE WHEN `ShuttleBus_D3`='班次三' THEN 1 END) AS ShuttleBus_D3_班次三";
 									$sql_query_Data=$sql_query_Data." FROM `seminar` WHERE 1";
 									//echo $sql_query_Data;
 									$DataID_result=mysqli_query($db_link,$sql_query_Data) or die("sql_query_Data查詢失敗");
@@ -331,6 +353,20 @@
 										$Dinner_D2_葷=$rowData['Dinner_D2_葷'];
 										$Dinner_D2_素=$rowData['Dinner_D2_素'];
 										$Dinner_D2_不需要=$rowData['Dinner_D2_不需要'];
+										$DinnerCompanion_Omnivorous=$rowData['DinnerCompanion_Omnivorous'];
+										$DinnerCompanion_Vegetarian=$rowData['DinnerCompanion_Vegetarian'];
+										$ShuttleBus_D1_不需要=$rowData['ShuttleBus_D1_不需要'];
+										$ShuttleBus_D1_班次一=$rowData['ShuttleBus_D1_班次一'];
+										$ShuttleBus_D1_班次二=$rowData['ShuttleBus_D1_班次二'];
+										$ShuttleBus_D1_班次三=$rowData['ShuttleBus_D1_班次三'];
+										$ShuttleBus_D2_不需要=$rowData['ShuttleBus_D2_不需要'];
+										$ShuttleBus_D2_班次一=$rowData['ShuttleBus_D2_班次一'];
+										$ShuttleBus_D2_班次二=$rowData['ShuttleBus_D2_班次二'];
+										$ShuttleBus_D2_班次三=$rowData['ShuttleBus_D2_班次三'];
+										$ShuttleBus_D3_不需要=$rowData['ShuttleBus_D3_不需要'];
+										$ShuttleBus_D3_班次一=$rowData['ShuttleBus_D3_班次一'];
+										$ShuttleBus_D3_班次二=$rowData['ShuttleBus_D3_班次二'];
+										$ShuttleBus_D3_班次三=$rowData['ShuttleBus_D3_班次三'];
 										break;
 									}
 									
@@ -343,6 +379,10 @@
 									echo "<td style='text-align:center;'>葷".$Lunch_D3_葷."<br>素".$Lunch_D3_素."<br>不需要".$Lunch_D3_不需要."</td>";
 									echo "<td style='text-align:center;'>葷".$Dinner_D1_葷."<br>素".$Dinner_D1_素."<br>不需要".$Dinner_D1_不需要."</td>";
 									echo "<td style='text-align:center;'>葷".$Dinner_D2_葷."<br>素".$Dinner_D2_素."<br>不需要".$Dinner_D2_不需要."</td>";
+									echo "<td style='text-align:center;'>葷".$DinnerCompanion_Omnivorous."<br>素".$DinnerCompanion_Vegetarian."<br></td>";
+									echo "<td style='text-align:center;'>不需要".$ShuttleBus_D1_不需要."<br>班次一".$ShuttleBus_D1_班次一."<br>班次二".$ShuttleBus_D1_班次二."<br>班次三".$ShuttleBus_D1_班次三."</td>";
+									echo "<td style='text-align:center;'>不需要".$ShuttleBus_D2_不需要."<br>班次一".$ShuttleBus_D2_班次一."<br>班次二".$ShuttleBus_D2_班次二."<br>班次三".$ShuttleBus_D2_班次三."</td>";
+									echo "<td style='text-align:center;'>不需要".$ShuttleBus_D3_不需要."<br>班次一".$ShuttleBus_D3_班次一."<br>班次二".$ShuttleBus_D3_班次二."<br>班次三".$ShuttleBus_D3_班次三."</td>";
 									echo "</tr>";
 								?>	
 							</tbody>
@@ -377,6 +417,7 @@
 									<li><a href="https://tanet2022.ntub.edu.tw/" target="_blank">研討會首頁</a></li>
 									<li><a href="https://tanetsys.mcu.edu.tw/index.php/tanet2022/tanet2022" target="_blank">投稿系統</a></li>
 									<li><a href="index.php">報名研討會</a></li>
+									<li><a href="Information.php">報名狀態查詢</a></li>
 									<?php
 										if(isset($_SESSION['tanet2022_Islogin'])){
 											echo"<li><a href='backstage_finance.php'>後臺管理</a></li>";

@@ -72,6 +72,7 @@
 							<li><a href="https://tanet2022.ntub.edu.tw/" target="_blank">研討會首頁</a></li>
 							<li><a href="https://tanetsys.mcu.edu.tw/index.php/tanet2022/tanet2022" target="_blank">投稿系統</a></li>
 							<li><a href="index.php">報名研討會</a></li>
+							<li><a href="Information.php">報名狀態查詢</a></li>
 							<?php
 								if(isset($_SESSION['tanet2022_Islogin'])){
 									echo"<li><a href='backstage_finance.php'>後臺管理</a>";
@@ -178,14 +179,14 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text" id="basic-addon1">　　　　　論文篇數</span>
 										</div>
-										<input type="text"  required="required" name="PapersAmount" class="form-control" placeholder="請輸入論文篇數" aria-label="Username" aria-describedby="basic-addon1">
+										<input type="number"  required="required" name="PapersAmount" class="form-control" placeholder="請輸入論文篇數" aria-label="Username" aria-describedby="basic-addon1">
 									</div>
 									<br>
 									<div class="input-group mb-3">
 										<div class="input-group-prepend">
 											<span class="input-group-text" id="basic-addon1">　論文篇數（主編）</span>
 										</div>
-										<input type="text"  required="required" name="PapersAmount_ChiefEditor" class="form-control" placeholder="請輸入論文篇數（主編）" aria-label="Username" aria-describedby="basic-addon1">
+										<input type="number"  required="required" name="PapersAmount_ChiefEditor" class="form-control" placeholder="請輸入論文篇數（主編）" aria-label="Username" aria-describedby="basic-addon1">
 									</div>
 									<br>
 									<div class="input-group mb-3">

@@ -11,13 +11,10 @@
 		$FinanceData_result=mysqli_query($db_link,$sql_query_FinanceData) or die("FinanceData查詢失敗");
 		while($row_FinanceData=mysqli_fetch_array($FinanceData_result)){
 			$NowUpdate=htmlspecialchars($row_FinanceData['_ID']);
-			$LetterNotification=0;
-			if(isset($_POST[$NowUpdate.'_LetterNotification']))//有勾才會有
-				$LetterNotification=1;
 			$sql_query_UpdateFinance="UPDATE `finance` SET ";
-			$sql_query_UpdateFinance=$sql_query_UpdateFinance."`ReceiptID`='".htmlspecialchars($_POST[$NowUpdate.'_ReceiptID'])."',`TransactionID`='".htmlspecialchars($_POST[$NowUpdate.'_TransactionID'])."',`PaymentMethod`='".htmlspecialchars($_POST[$NowUpdate.'_PaymentMethod'])."',";
+			$sql_query_UpdateFinance=$sql_query_UpdateFinance."`TransactionID`='".htmlspecialchars($_POST[$NowUpdate.'_TransactionID'])."',`PaymentMethod`='".htmlspecialchars($_POST[$NowUpdate.'_PaymentMethod'])."',";
 			$sql_query_UpdateFinance=$sql_query_UpdateFinance."`PaymentDate`='".htmlspecialchars($_POST[$NowUpdate.'_PaymentDate'])."',`PaymentAmount`='".htmlspecialchars($_POST[$NowUpdate.'_PaymentAmount'])."',`SpecialCase`='".htmlspecialchars($_POST[$NowUpdate.'_SpecialCase'])."',";
-			$sql_query_UpdateFinance=$sql_query_UpdateFinance."`LetterNotification`='".htmlspecialchars($LetterNotification)."'";
+			$sql_query_UpdateFinance=$sql_query_UpdateFinance."`FinanceStatus`='".htmlspecialchars($_POST[$NowUpdate.'_FinanceStatus'])."'";
 			$sql_query_UpdateFinance=$sql_query_UpdateFinance." WHERE `_ID`='".htmlspecialchars($NowUpdate)."'";
 			// echo $sql_query_UpdateFinance."<br>";
 			$UpdateFinance_result=mysqli_query($db_link,$sql_query_UpdateFinance) or die("FinanceData查詢失敗");

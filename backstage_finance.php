@@ -78,6 +78,7 @@
 							<li><a href="https://tanet2022.ntub.edu.tw/" target="_blank">研討會首頁</a></li>
 							<li><a href="https://tanetsys.mcu.edu.tw/index.php/tanet2022/tanet2022" target="_blank">投稿系統</a></li>
 							<li><a href="index.php">報名研討會</a></li>
+							<li><a href="Information.php">報名狀態查詢</a></li>
 							<?php
 								if(isset($_SESSION['tanet2022_Islogin'])){
 									echo"<li><a href='backstage_finance.php'>後臺管理</a>";
@@ -125,17 +126,17 @@
 								<tr>
 								<th scope="col">報名編號</th>
 								<th scope="col">姓名</th>
-								<th scope="col">電子信箱</th>
+								<th scope="col">單位</th>
 								<th scope="col">身份別</th>
-								<!-- <th scope="col">收據抬頭</th>
-								<th scope="col">統一編號</th> -->
+								<th scope="col">論文篇數</th>
+								<th scope="col">論文篇數<br>（主編）</th>
 								<th scope="col">收據號碼</th>
 								<th scope="col">交易序號</th>
 								<th scope="col">繳費方式</th>
 								<th scope="col">繳費日期</th>
 								<th scope="col">繳費金額</th>
 								<th scope="col">特殊案例</th>
-								<th scope="col">信件通知</th>
+								<th scope="col">帳款狀態</th>
 								<th scope="col">處理</th>
 								</tr>
 							</thead>
@@ -150,13 +151,15 @@
 									$DataID_result=mysqli_query($db_link,$sql_query_DataID) or die("Data_result查詢失敗");
 									while($row_DataID=mysqli_fetch_array($DataID_result)){//查出某筆ID
 										echo "<tr>";
-											echo "<th scope='row'>".$row_DataID['_ID']."</th>";
+											echo "<th scope='row'><a href='Information.php?search_ID=".$row_DataID['_ID']."' target='_blank'>".$row_DataID['_ID']."</a></th>";
 											$sql_query_PersonalData="SELECT * FROM `personal` WHERE `_ID`='".$row_DataID['personalID']."'";//取得報名資訊ID
 											$PersonalData_result=mysqli_query($db_link,$sql_query_PersonalData) or die("Data_result查詢失敗");
 											while($row_PersonalData=mysqli_fetch_array($PersonalData_result)){//查出PersonalData
 												echo "<td>".$row_PersonalData['Cname']."</td>";
-												echo "<td>".$row_PersonalData['Email']."</td>";
+												echo "<td>".$row_PersonalData['Unit']."</td>";
 												echo "<td>".$row_PersonalData['Identity']."</td>";
+												echo "<td>".$row_PersonalData['PapersAmount']."</td>";
+												echo "<td>".$row_PersonalData['PapersAmount_ChiefEditor']."</td>";
 												break;
 											}
 											$sql_query_FinanceData="SELECT * FROM `finance` WHERE `_ID`='".$row_DataID['financeID']."'";//取得金融資訊ID
@@ -164,7 +167,7 @@
 											while($row_FinanceData=mysqli_fetch_array($FinanceData_result)){//查出PersonalData
 												// echo "<td>".$row_FinanceData['ReceiptHeader']."</td>";
 												// echo "<td>".$row_FinanceData['TaxID']."</td>";
-												echo "<td><input type='text' name='".$row_FinanceData['_ID']."_ReceiptID' class='form-control' value='".$row_FinanceData['ReceiptID']."'></td>";
+												echo "<td>".$row_FinanceData['ReceiptID']."</td>";
 												echo "<td><input type='text' name='".$row_FinanceData['_ID']."_TransactionID' class='form-control' value='".$row_FinanceData['TransactionID']."'></td>";
 												echo "<td>";
 													echo "<select class='form-control' name='".$row_FinanceData['_ID']."_PaymentMethod'>";
@@ -188,9 +191,17 @@
 												echo "<td><input type='number' name='".$row_FinanceData['_ID']."_PaymentAmount' class='form-control' value='".$row_FinanceData['PaymentAmount']."'></td>";
 												echo "<td><input type='text' name='".$row_FinanceData['_ID']."_SpecialCase' class='form-control' value='".$row_FinanceData['SpecialCase']."'></td>";
 												echo "<td>";
-													echo "<input type='checkbox' name='".$row_FinanceData['_ID']."_LetterNotification' class='form-check-input'";
-													if($row_FinanceData['LetterNotification']==1) echo 'checked';
-													echo">";
+													echo "<select class='form-control' name='".$row_FinanceData['_ID']."_FinanceStatus'>";
+														echo "<option value='尚未處理'";
+															if($row_FinanceData['FinanceStatus']=="尚未處理") echo "selected";
+														echo ">尚未處理</option>";
+														echo "<option value='帳款已核'";
+															if($row_FinanceData['FinanceStatus']=="帳款已核") echo "selected";
+														echo ">帳款已核</option>";
+														echo "<option value='款項異常'";
+															if($row_FinanceData['FinanceStatus']=="款項異常") echo "selected";
+														echo ">款項異常</option>";
+													echo "</select>";
 												echo "</td>";
 												break;
 											}
@@ -230,6 +241,7 @@
 									<li><a href="https://tanet2022.ntub.edu.tw/" target="_blank">研討會首頁</a></li>
 									<li><a href="https://tanetsys.mcu.edu.tw/index.php/tanet2022/tanet2022" target="_blank">投稿系統</a></li>
 									<li><a href="index.php">報名研討會</a></li>
+									<li><a href="Information.php">報名狀態查詢</a></li>
 									<?php
 										if(isset($_SESSION['tanet2022_Islogin'])){
 											echo"<li><a href='backstage_finance.php'>後臺管理</a></li>";

@@ -52,6 +52,8 @@
 		if(isset($_POST['ReceiptHeader'])) $ReceiptHeader=$_POST['ReceiptHeader'];	
 		$TaxID="";
 		if(isset($_POST['TaxID'])) $TaxID=$_POST['TaxID'];
+		$ReceiptID="";//收據條碼
+
 		/*修正特殊字符*/
 		$Cname=htmlspecialchars($Cname);
 		$Unit=htmlspecialchars($Unit);
@@ -86,7 +88,7 @@
 		$sql_query_InsertPersonal="INSERT INTO `personal`" ;
 		$sql_query_InsertPersonal=$sql_query_InsertPersonal."(`Cname`, `Unit`, `Identity`, `Job`, `Email`, `Phone`, `PapersAmount`, `PapersAmount_ChiefEditor`, `PapersID`) VALUES ";
 		$sql_query_InsertPersonal=$sql_query_InsertPersonal."('$Cname','$Unit','$Identity','$Job','$Email','$Phone','$PapersAmount','$PapersAmount_ChiefEditor','$PapersID')";
-		echo $sql_query_InsertPersonal;
+		//echo $sql_query_InsertPersonal;
 		$InsertPersonal_result=mysqli_query($db_link,$sql_query_InsertPersonal) or die("查詢失敗");
 		$sql_query_LastID="SELECT LAST_INSERT_ID() AS LAST_ID";//取得剛剛加入ID
 		$LastID_result=mysqli_query($db_link,$sql_query_LastID) or die("InsertPersonal查詢失敗");//上一筆加入的ID
@@ -122,7 +124,7 @@
 		// echo $Finance_LastID;
 		//加入Alltable
 		$sql_query_InsertAlltable="INSERT INTO `alltable`(`financeID`, `personalID`, `seminarID`) VALUES ('$Finance_LastID','$Personal_LastID','$Seminar_LastID')";
-		echo $sql_query_InsertAlltable;
+		//echo $sql_query_InsertAlltable;
 		$InsertAlltable_result=mysqli_query($db_link,$sql_query_InsertAlltable) or die("InsertAlltable查詢失敗");
 
 		$Alltable_LastID="-1";
@@ -132,6 +134,12 @@
 			$Alltable_LastID=$row_LastID['LAST_ID'];
 			break;
 		}
+
+		///產生收據號碼	儲存回金融資訊表
+		$ReceiptID="TANET111".str_pad($Alltable_LastID, 4, "0",STR_PAD_LEFT);//TANET111+報名序號補滿四位數
+		$sql_query_AddReceiptID="UPDATE `finance` SET `ReceiptID`='".$ReceiptID."' WHERE `_ID`='".$Finance_LastID."'";//取得剛剛加入ID
+		$AddReceiptID_result=mysqli_query($db_link,$sql_query_AddReceiptID) or die("AddReceiptID查詢失敗");//上一筆加入的ID
+		
 	}
 	else
 		echo"<script  language=\"JavaScript\">alert('請由正確路徑進入');location.href=\"index.php\";</script>";
