@@ -114,7 +114,7 @@
 		<section class="faq">
 			<div class="container">
 				<div class="row">
-					<form method="get" action="information.php" name="search_DataByID" id="search_DataByID">
+					<form method="get" action="Information.php" name="search_DataByID" id="search_DataByID">
 						<div class="section-title text-center wow zoomIn">
 							<h1>報名資訊查詢</h1>
 							<span></span>

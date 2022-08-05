@@ -18,7 +18,7 @@
 		$PapersAmount="";
 		if(isset($_POST['PapersAmount'])) $PapersAmount=$_POST['PapersAmount'];		
 		$PapersAmount_ChiefEditor="";
-		if(isset($_POST['PapersAmount_ChiefEditor'])) $PapersAmount_ChiefEfitor=$_POST['PapersAmount_ChiefEditor'];		
+		if(isset($_POST['PapersAmount_ChiefEditor'])) $PapersAmount_ChiefEditor=$_POST['PapersAmount_ChiefEditor'];		
 		$PapersID="";
 		if(isset($_POST['PapersID'])) $PapersID=$_POST['PapersID'];	
 		$Transportation="";
@@ -89,7 +89,7 @@
 		$sql_query_InsertPersonal=$sql_query_InsertPersonal."(`Cname`, `Unit`, `Identity`, `Job`, `Email`, `Phone`, `PapersAmount`, `PapersAmount_ChiefEditor`, `PapersID`) VALUES ";
 		$sql_query_InsertPersonal=$sql_query_InsertPersonal."('$Cname','$Unit','$Identity','$Job','$Email','$Phone','$PapersAmount','$PapersAmount_ChiefEditor','$PapersID')";
 		//echo $sql_query_InsertPersonal;
-		$InsertPersonal_result=mysqli_query($db_link,$sql_query_InsertPersonal) or die("查詢失敗");
+		$InsertPersonal_result=mysqli_query($db_link,$sql_query_InsertPersonal) or die("InsertPersonal查詢失敗");
 		$sql_query_LastID="SELECT LAST_INSERT_ID() AS LAST_ID";//取得剛剛加入ID
 		$LastID_result=mysqli_query($db_link,$sql_query_LastID) or die("InsertPersonal查詢失敗");//上一筆加入的ID
 		while($row_LastID=mysqli_fetch_array($LastID_result)){
@@ -100,7 +100,7 @@
 		$sql_query_InsertSeminar="INSERT INTO `seminar`";
 		$sql_query_InsertSeminar=$sql_query_InsertSeminar."(`Transportation`, `ShuttleBus_D1`, `ShuttleBus_D2`, `ShuttleBus_D3`, `CarLicense`, `Lunch_D1`, `Lunch_D2`, `Lunch_D3`, `Dinner_D1`, `Dinner_D2`, `DinnerCompanion_Omnivorous`, `DinnerCompanion_Vegetarian`, `Notice`) VALUES ";
 		$sql_query_InsertSeminar=$sql_query_InsertSeminar."('$Transportation','$ShuttleBus_D1','$ShuttleBus_D2','$ShuttleBus_D3','$CarLicense','$Lunch_D1','$Lunch_D2','$Lunch_D3','$Dinner_D1','$Dinner_D2','$DinnerCompanion_Omnivorous','$DinnerCompanion_Vegetarian','$Notice')";
-		$InsertSeminar_result=mysqli_query($db_link,$sql_query_InsertSeminar) or die("查詢失敗");
+		$InsertSeminar_result=mysqli_query($db_link,$sql_query_InsertSeminar) or die("InsertSeminar查詢失敗");
 		$sql_query_LastID="SELECT LAST_INSERT_ID() AS LAST_ID";//取得剛剛加入ID
 		$LastID_result=mysqli_query($db_link,$sql_query_LastID) or die("InsertSeminar查詢失敗");//上一筆加入的ID
 		while($row_LastID=mysqli_fetch_array($LastID_result)){
@@ -111,7 +111,8 @@
 		$sql_query_InsertFinance="INSERT INTO `finance`";
 		$sql_query_InsertFinance=$sql_query_InsertFinance."(`ReceiptHeader`, `TaxID`) VALUES ";
 		$sql_query_InsertFinance=$sql_query_InsertFinance."('$ReceiptHeader','$TaxID')";
-		$InsertFinance_result=mysqli_query($db_link,$sql_query_InsertFinance) or die("查詢失敗");
+//		echo $sql_query_InsertFinance;
+		$InsertFinance_result=mysqli_query($db_link,$sql_query_InsertFinance) or die("InsertFinance查詢失敗");
 		$sql_query_LastID="SELECT LAST_INSERT_ID() AS LAST_ID";//取得剛剛加入ID
 		$LastID_result=mysqli_query($db_link,$sql_query_LastID) or die("InsertFinance查詢失敗");//上一筆加入的ID
 		while($row_LastID=mysqli_fetch_array($LastID_result)){

@@ -110,7 +110,7 @@
 		$sql_query_UpdateFinance="UPDATE `finance` SET `ReceiptHeader`='".$ReceiptHeader."',`TaxID`='".$TaxID."' WHERE `_ID`='".$FinanceID."'";
 		$UpdateFinance_result=mysqli_query($db_link,$sql_query_UpdateFinance) or die("UpdateFinance查詢失敗");//上一筆加入的ID
 		
-		echo"<script  language=\"JavaScript\">;location.href=\"information.php?search_ID=".$search_ID."\";</script>";
+		echo"<script  language=\"JavaScript\">;location.href=\"Information.php?search_ID=".$search_ID."\";</script>";
 	}
 	else//不當路徑進入
 		echo"<script  language=\"JavaScript\">alert('請由正確路徑進入');location.href=\"login.php\";</script>";

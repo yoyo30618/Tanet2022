@@ -1,5 +1,5 @@
 <?php
-	$db_link=@mysqli_connect("127.0.0.1","root","yoyo0516");
+	$db_link=@mysqli_connect("127.0.0.1","tanet2022","nttucsie");
 	if(!$db_link)
 		die("資料庫連線失敗<br>");
 	else{
