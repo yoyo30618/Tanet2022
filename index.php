@@ -133,9 +133,23 @@
 									<br>
 									<div class="input-group mb-3">
 										<div class="input-group-prepend">
-											<span class="input-group-text" id="basic-addon1">服務單位／就讀學校</span>
+											<span class="input-group-text" id="basic-addon1">服務學校／就讀學校</span>
 										</div>
-										<input type="text"  required="required" name="Unit" class="form-control" placeholder="請輸入服務單位／就讀學校" aria-label="Username" aria-describedby="basic-addon1">
+										<input type="text"  required="required" name="Unit" class="form-control" placeholder="請輸入服務學校／就讀學校" aria-label="Username" aria-describedby="basic-addon1">
+									</div>
+									<br>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text" id="basic-addon1">服務科系／就讀科系</span>
+										</div>
+										<input type="text"  required="required" name="Department" class="form-control" placeholder="請輸入服務科系／就讀科系" aria-label="Username" aria-describedby="basic-addon1">
+									</div>
+									<br>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text" id="basic-addon1">　　學生請輸入學號</span>
+										</div>
+										<input type="text"  required="required" name="StuID" class="form-control" placeholder="學生請輸入學號" aria-label="Username" aria-describedby="basic-addon1">
 									</div>
 									<br>
 									<div class="input-group mb-3">
@@ -143,14 +157,12 @@
 											<span class="input-group-text" id="basic-addon1">　　　　　　身份別</span>
 										</div>
 										<select class="form-control" name="Identity">
-											<option value="學⽣（不需發表論⽂者）" selected>學⽣（不需發表論⽂者） NT$2,500</option>
-											<option value="教授（不需發表論⽂者）">教授（不需發表論⽂者） NT$3,000</option>
-											<option value="政府單位">政府單位 NT$3,000</option>
-											<option value="⼀般⼈⼠">⼀般⼈⼠ NT$3,000</option>
-											<option value="發表論⽂者">發表論⽂者（⼝頭或海報發表皆需報名） NT$3,000</option>
-											<option value="教育部免費名額">教育部免費名額</option>
-											<option value="主編">主編（免註冊費，論⽂⼀篇NT$1,000）</option>
-											<option value="贊助廠商">贊助廠商</option>
+											<option value="作者（非學生）" selected>作者（非學生）</option>
+											<option value="作者（學生）">作者（學生）</option>
+											<option value="學生（不需發表論文者）">學生（不需發表論文者）</option>
+											<option value="主編">主編</option>
+											<option value="廠商">廠商</option>
+											<option value="其他">其他</option>
 										</select>
 									</div>
 									<br>
@@ -180,13 +192,6 @@
 											<span class="input-group-text" id="basic-addon1">　　　　　論文篇數</span>
 										</div>
 										<input type="number"  required="required" name="PapersAmount" class="form-control" placeholder="請輸入論文篇數" aria-label="Username" aria-describedby="basic-addon1">
-									</div>
-									<br>
-									<div class="input-group mb-3">
-										<div class="input-group-prepend">
-											<span class="input-group-text" id="basic-addon1">　論文篇數（主編）</span>
-										</div>
-										<input type="number"  required="required" name="PapersAmount_ChiefEditor" class="form-control" placeholder="請輸入論文篇數（主編）" aria-label="Username" aria-describedby="basic-addon1">
 									</div>
 									<br>
 									<div class="input-group mb-3">
@@ -225,9 +230,8 @@
 									</div>
 									<select class="form-control" name="ShuttleBus_D1">
 										<option value="不需要" selected>不需要</option>
-										<option value="班次一" >班次一</option>
-										<option value="班次二">班次二</option>
-										<option value="班次三">班次三</option>
+										<option value="會場往返桃園高鐵站" >會場往返桃園高鐵站</option>
+										<option value="會場往返中壢火車站">會場往返中壢火車站</option>
 									</select>
 								</div>
 								<br>
@@ -237,9 +241,8 @@
 									</div>
 									<select class="form-control" name="ShuttleBus_D2">
 										<option value="不需要" selected>不需要</option>
-										<option value="班次一" >班次一</option>
-										<option value="班次二">班次二</option>
-										<option value="班次三">班次三</option>
+										<option value="會場往返桃園高鐵站" >會場往返桃園高鐵站</option>
+										<option value="會場往返中壢火車站">會場往返中壢火車站</option>
 									</select>
 								</div>
 								<br>
@@ -249,9 +252,8 @@
 									</div>
 									<select class="form-control" name="ShuttleBus_D3">
 										<option value="不需要" selected>不需要</option>
-										<option value="班次一" >班次一</option>
-										<option value="班次二">班次二</option>
-										<option value="班次三">班次三</option>
+										<option value="會場往返桃園高鐵站" >會場往返桃園高鐵站</option>
+										<option value="會場往返中壢火車站">會場往返中壢火車站</option>
 									</select>
 								</div>
 								<br>

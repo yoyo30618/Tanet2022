@@ -22,6 +22,12 @@
 		$Unit='';
 		if(isset($_POST['Unit'])) $Unit=$_POST['Unit'];
 		$Unit=htmlspecialchars($Unit);
+		$Department='';
+		if(isset($_POST['Department'])) $Department=$_POST['Department'];
+		$Department=htmlspecialchars($Department);
+		$StuID='';
+		if(isset($_POST['StuID'])) $StuID=$_POST['StuID'];
+		$StuID=htmlspecialchars($StuID);
 		$Identity='';
 		if(isset($_POST['Identity'])) $Identity=$_POST['Identity'];
 		$Identity=htmlspecialchars($Identity);
@@ -37,9 +43,6 @@
 		$PapersAmount='';
 		if(isset($_POST['PapersAmount'])) $PapersAmount=$_POST['PapersAmount'];
 		$PapersAmount=htmlspecialchars($PapersAmount);
-		$PapersAmount_ChiefEditor='';
-		if(isset($_POST['PapersAmount_ChiefEditor'])) $PapersAmount_ChiefEditor=$_POST['PapersAmount_ChiefEditor'];
-		$PapersAmount_ChiefEditor=htmlspecialchars($PapersAmount_ChiefEditor);
 		$PapersID='';
 		if(isset($_POST['PapersID'])) $PapersID=$_POST['PapersID'];
 		$PapersID=htmlspecialchars($PapersID);
@@ -92,9 +95,9 @@
 		if(isset($_POST['UpdateInformation'])) $UpdateInformation=$_POST['UpdateInformation'];
 		$UpdateInformation=htmlspecialchars($UpdateInformation);
 		//更新Personal
-		$sql_query_UpdatePersonal="UPDATE `personal` SET `Cname`='".$Cname."',`Unit`='".$Unit."',`Identity`='".$Identity."',";
+		$sql_query_UpdatePersonal="UPDATE `personal` SET `Cname`='".$Cname."',`Unit`='".$Unit."',`Department`='".$Department."',`StuID`='".$StuID."',`Identity`='".$Identity."',";
 		$sql_query_UpdatePersonal=$sql_query_UpdatePersonal."`Job`='".$Job."',`Email`='".$Email."',`Phone`='".$Phone."',";
-		$sql_query_UpdatePersonal=$sql_query_UpdatePersonal."`PapersAmount`='".$PapersAmount."',`PapersAmount_ChiefEditor`='".$PapersAmount_ChiefEditor."',";
+		$sql_query_UpdatePersonal=$sql_query_UpdatePersonal."`PapersAmount`='".$PapersAmount."',";
 		$sql_query_UpdatePersonal=$sql_query_UpdatePersonal."`PapersID`='".$PapersID."' WHERE `_ID`='".$PersonalID."'";
 		$UpdatePersonal_result=mysqli_query($db_link,$sql_query_UpdatePersonal) or die("UpdatePersonal查詢失敗");//上一筆加入的ID
 		

@@ -127,9 +127,10 @@
 								<th scope="col">報名編號</th>
 								<th scope="col">姓名</th>
 								<th scope="col">單位</th>
+								<th scope="col">科系</th>
+								<th scope="col">學號</th>
 								<th scope="col">身份別</th>
 								<th scope="col">論文篇數</th>
-								<th scope="col">論文篇數<br>（主編）</th>
 								<th scope="col">收據號碼</th>
 								<th scope="col">交易序號</th>
 								<th scope="col">繳費方式</th>
@@ -157,9 +158,10 @@
 											while($row_PersonalData=mysqli_fetch_array($PersonalData_result)){//查出PersonalData
 												echo "<td>".$row_PersonalData['Cname']."</td>";
 												echo "<td>".$row_PersonalData['Unit']."</td>";
+												echo "<td>".$row_PersonalData['Department']."</td>";
+												echo "<td>".$row_PersonalData['StuID']."</td>";
 												echo "<td>".$row_PersonalData['Identity']."</td>";
 												echo "<td>".$row_PersonalData['PapersAmount']."</td>";
-												echo "<td>".$row_PersonalData['PapersAmount_ChiefEditor']."</td>";
 												break;
 											}
 											$sql_query_FinanceData="SELECT * FROM `finance` WHERE `_ID`='".$row_DataID['financeID']."'";//取得金融資訊ID

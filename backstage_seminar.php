@@ -255,7 +255,6 @@
 								<tr>
 									<th scope="col" rowspan="2" style="text-align:center;">報名人數</th>
 									<th scope="col" rowspan="2" style="text-align:center;">論文篇數</th>
-									<th scope="col" rowspan="2" style="text-align:center;">論文篇數（主編）</th>
 									<th scope="col" colspan="3" style="text-align:center;">午餐</th>
 									<th scope="col" colspan="2" style="text-align:center;">晚餐</th>
 									<th scope="col" rowspan="2" style="text-align:center;">晚宴攜伴</th>
@@ -277,10 +276,9 @@
 									// 查詢幾筆報名
 									// SELECT COUNT(*) AS Cnt_Register FROM alltable
 								    // 查詢論文及主編總篇數
-									// SELECT SUM(`PapersAmount`) AS Cnt_PapersAmount, SUM(`PapersAmount_ChiefEditor`) AS Cnt_PapersAmount_ChiefEditor FROM personal
+									// SELECT SUM(`PapersAmount`) AS Cnt_PapersAmount FROM personal
 									$Cnt_Register=0;
 									$Cnt_PapersAmount=0;
-									$Cnt_PapersAmount_ChiefEditor=0;
 									$Lunch_D1_葷=0;
 									$Lunch_D1_素=0;
 									$Lunch_D1_不需要=0;
@@ -299,17 +297,14 @@
 									$DinnerCompanion_Omnivorous=0;
 									$DinnerCompanion_Vegetarian=0;
 									$ShuttleBus_D1_不需要=0;
-									$ShuttleBus_D1_班次一=0;
-									$ShuttleBus_D1_班次二=0;
-									$ShuttleBus_D1_班次三=0;
+									$ShuttleBus_D1_會場往返桃園高鐵站=0;
+									$ShuttleBus_D1_會場往返中壢火車站=0;
 									$ShuttleBus_D2_不需要=0;
-									$ShuttleBus_D2_班次一=0;
-									$ShuttleBus_D2_班次二=0;
-									$ShuttleBus_D2_班次三=0;
+									$ShuttleBus_D2_會場往返桃園高鐵站=0;
+									$ShuttleBus_D2_會場往返中壢火車站=0;
 									$ShuttleBus_D3_不需要=0;
-									$ShuttleBus_D3_班次一=0;
-									$ShuttleBus_D3_班次二=0;
-									$ShuttleBus_D3_班次三=0;
+									$ShuttleBus_D3_會場往返桃園高鐵站=0;
+									$ShuttleBus_D3_會場往返中壢火車站=0;
 
 									$sql_query_Data="SELECT COUNT(*) AS Cnt_Register FROM alltable";
 									$DataID_result=mysqli_query($db_link,$sql_query_Data) or die("sql_query_Data查詢失敗");
@@ -318,11 +313,10 @@
 										break;
 									}
 
-									$sql_query_Data="SELECT SUM(`PapersAmount`) AS Cnt_PapersAmount, SUM(`PapersAmount_ChiefEditor`) AS Cnt_PapersAmount_ChiefEditor FROM personal";
+									$sql_query_Data="SELECT SUM(`PapersAmount`) AS Cnt_PapersAmount FROM personal";
 									$DataID_result=mysqli_query($db_link,$sql_query_Data) or die("sql_query_Data查詢失敗");
 									while($rowData=mysqli_fetch_array($DataID_result)){
 										$Cnt_PapersAmount=$rowData['Cnt_PapersAmount'];
-										$Cnt_PapersAmount_ChiefEditor=$rowData['Cnt_PapersAmount_ChiefEditor'];
 										break;
 									}
 									$sql_query_Data="SELECT COUNT(CASE WHEN `Lunch_D1`='葷' THEN 1 END) AS Lunch_D1_葷 ,COUNT(CASE WHEN `Lunch_D1`='素' THEN 1 END) AS Lunch_D1_素 ,COUNT(CASE WHEN `Lunch_D1`='不需要' THEN 1 END) AS Lunch_D1_不需要,";
@@ -331,9 +325,9 @@
 									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `Dinner_D1`='葷' THEN 1 END) AS Dinner_D1_葷 ,COUNT(CASE WHEN `Dinner_D1`='素' THEN 1 END) AS Dinner_D1_素 ,COUNT(CASE WHEN `Dinner_D1`='不需要' THEN 1 END) AS Dinner_D1_不需要,";
 									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `Dinner_D2`='葷' THEN 1 END) AS Dinner_D2_葷 ,COUNT(CASE WHEN `Dinner_D2`='素' THEN 1 END) AS Dinner_D2_素 ,COUNT(CASE WHEN `Dinner_D2`='不需要' THEN 1 END) AS Dinner_D2_不需要,";
 									$sql_query_Data=$sql_query_Data."SUM(`DinnerCompanion_Omnivorous`) AS DinnerCompanion_Omnivorous ,SUM(`DinnerCompanion_Vegetarian`) AS DinnerCompanion_Vegetarian,";
-									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `ShuttleBus_D1`='不需要' THEN 1 END) AS ShuttleBus_D1_不需要 ,COUNT(CASE WHEN `ShuttleBus_D1`='班次一' THEN 1 END) AS ShuttleBus_D1_班次一 ,COUNT(CASE WHEN `ShuttleBus_D1`='班次二' THEN 1 END) AS ShuttleBus_D1_班次二,COUNT(CASE WHEN `ShuttleBus_D1`='班次三' THEN 1 END) AS ShuttleBus_D1_班次三,";
-									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `ShuttleBus_D2`='不需要' THEN 1 END) AS ShuttleBus_D2_不需要 ,COUNT(CASE WHEN `ShuttleBus_D2`='班次一' THEN 1 END) AS ShuttleBus_D2_班次一 ,COUNT(CASE WHEN `ShuttleBus_D2`='班次二' THEN 1 END) AS ShuttleBus_D2_班次二,COUNT(CASE WHEN `ShuttleBus_D2`='班次三' THEN 1 END) AS ShuttleBus_D2_班次三,";
-									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `ShuttleBus_D3`='不需要' THEN 1 END) AS ShuttleBus_D3_不需要 ,COUNT(CASE WHEN `ShuttleBus_D3`='班次一' THEN 1 END) AS ShuttleBus_D3_班次一 ,COUNT(CASE WHEN `ShuttleBus_D3`='班次二' THEN 1 END) AS ShuttleBus_D3_班次二,COUNT(CASE WHEN `ShuttleBus_D3`='班次三' THEN 1 END) AS ShuttleBus_D3_班次三";
+									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `ShuttleBus_D1`='不需要' THEN 1 END) AS ShuttleBus_D1_不需要 ,COUNT(CASE WHEN `ShuttleBus_D1`='會場往返桃園高鐵站' THEN 1 END) AS ShuttleBus_D1_會場往返桃園高鐵站 ,COUNT(CASE WHEN `ShuttleBus_D1`='會場往返中壢火車站' THEN 1 END) AS ShuttleBus_D1_會場往返中壢火車站,";
+									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `ShuttleBus_D2`='不需要' THEN 1 END) AS ShuttleBus_D2_不需要 ,COUNT(CASE WHEN `ShuttleBus_D2`='會場往返桃園高鐵站' THEN 1 END) AS ShuttleBus_D2_會場往返桃園高鐵站 ,COUNT(CASE WHEN `ShuttleBus_D2`='會場往返中壢火車站' THEN 1 END) AS ShuttleBus_D2_會場往返中壢火車站,";
+									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `ShuttleBus_D3`='不需要' THEN 1 END) AS ShuttleBus_D3_不需要 ,COUNT(CASE WHEN `ShuttleBus_D3`='會場往返桃園高鐵站' THEN 1 END) AS ShuttleBus_D3_會場往返桃園高鐵站 ,COUNT(CASE WHEN `ShuttleBus_D3`='會場往返中壢火車站' THEN 1 END) AS ShuttleBus_D3_會場往返中壢火車站";
 									$sql_query_Data=$sql_query_Data." FROM `seminar` WHERE 1";
 									//echo $sql_query_Data;
 									$DataID_result=mysqli_query($db_link,$sql_query_Data) or die("sql_query_Data查詢失敗");
@@ -356,33 +350,29 @@
 										$DinnerCompanion_Omnivorous=$rowData['DinnerCompanion_Omnivorous'];
 										$DinnerCompanion_Vegetarian=$rowData['DinnerCompanion_Vegetarian'];
 										$ShuttleBus_D1_不需要=$rowData['ShuttleBus_D1_不需要'];
-										$ShuttleBus_D1_班次一=$rowData['ShuttleBus_D1_班次一'];
-										$ShuttleBus_D1_班次二=$rowData['ShuttleBus_D1_班次二'];
-										$ShuttleBus_D1_班次三=$rowData['ShuttleBus_D1_班次三'];
+										$ShuttleBus_D1_會場往返桃園高鐵站=$rowData['ShuttleBus_D1_會場往返桃園高鐵站'];
+										$ShuttleBus_D1_會場往返中壢火車站=$rowData['ShuttleBus_D1_會場往返中壢火車站'];
 										$ShuttleBus_D2_不需要=$rowData['ShuttleBus_D2_不需要'];
-										$ShuttleBus_D2_班次一=$rowData['ShuttleBus_D2_班次一'];
-										$ShuttleBus_D2_班次二=$rowData['ShuttleBus_D2_班次二'];
-										$ShuttleBus_D2_班次三=$rowData['ShuttleBus_D2_班次三'];
+										$ShuttleBus_D2_會場往返桃園高鐵站=$rowData['ShuttleBus_D2_會場往返桃園高鐵站'];
+										$ShuttleBus_D2_會場往返中壢火車站=$rowData['ShuttleBus_D2_會場往返中壢火車站'];
 										$ShuttleBus_D3_不需要=$rowData['ShuttleBus_D3_不需要'];
-										$ShuttleBus_D3_班次一=$rowData['ShuttleBus_D3_班次一'];
-										$ShuttleBus_D3_班次二=$rowData['ShuttleBus_D3_班次二'];
-										$ShuttleBus_D3_班次三=$rowData['ShuttleBus_D3_班次三'];
+										$ShuttleBus_D3_會場往返桃園高鐵站=$rowData['ShuttleBus_D3_會場往返桃園高鐵站'];
+										$ShuttleBus_D3_會場往返中壢火車站=$rowData['ShuttleBus_D3_會場往返中壢火車站'];
 										break;
 									}
 									
 									echo "<tr>";
 									echo "<td style='text-align:center;'>".$Cnt_Register."</td>";
 									echo "<td style='text-align:center;'>".$Cnt_PapersAmount."</td>";
-									echo "<td style='text-align:center;'>".$Cnt_PapersAmount_ChiefEditor."</td>";
 									echo "<td style='text-align:center;'>葷".$Lunch_D1_葷."<br>素".$Lunch_D1_素."<br>不需要".$Lunch_D1_不需要."</td>";
 									echo "<td style='text-align:center;'>葷".$Lunch_D2_葷."<br>素".$Lunch_D2_素."<br>不需要".$Lunch_D2_不需要."</td>";
 									echo "<td style='text-align:center;'>葷".$Lunch_D3_葷."<br>素".$Lunch_D3_素."<br>不需要".$Lunch_D3_不需要."</td>";
 									echo "<td style='text-align:center;'>葷".$Dinner_D1_葷."<br>素".$Dinner_D1_素."<br>不需要".$Dinner_D1_不需要."</td>";
 									echo "<td style='text-align:center;'>葷".$Dinner_D2_葷."<br>素".$Dinner_D2_素."<br>不需要".$Dinner_D2_不需要."</td>";
 									echo "<td style='text-align:center;'>葷".$DinnerCompanion_Omnivorous."<br>素".$DinnerCompanion_Vegetarian."<br></td>";
-									echo "<td style='text-align:center;'>不需要".$ShuttleBus_D1_不需要."<br>班次一".$ShuttleBus_D1_班次一."<br>班次二".$ShuttleBus_D1_班次二."<br>班次三".$ShuttleBus_D1_班次三."</td>";
-									echo "<td style='text-align:center;'>不需要".$ShuttleBus_D2_不需要."<br>班次一".$ShuttleBus_D2_班次一."<br>班次二".$ShuttleBus_D2_班次二."<br>班次三".$ShuttleBus_D2_班次三."</td>";
-									echo "<td style='text-align:center;'>不需要".$ShuttleBus_D3_不需要."<br>班次一".$ShuttleBus_D3_班次一."<br>班次二".$ShuttleBus_D3_班次二."<br>班次三".$ShuttleBus_D3_班次三."</td>";
+									echo "<td style='text-align:center;'>不需要".$ShuttleBus_D1_不需要."<br>會場往返桃園高鐵站".$ShuttleBus_D1_會場往返桃園高鐵站."<br>會場往返中壢火車站".$ShuttleBus_D1_會場往返中壢火車站."</td>";
+									echo "<td style='text-align:center;'>不需要".$ShuttleBus_D2_不需要."<br>會場往返桃園高鐵站".$ShuttleBus_D2_會場往返桃園高鐵站."<br>會場往返中壢火車站".$ShuttleBus_D2_會場往返中壢火車站."</td>";
+									echo "<td style='text-align:center;'>不需要".$ShuttleBus_D3_不需要."<br>會場往返桃園高鐵站".$ShuttleBus_D3_會場往返桃園高鐵站."<br>會場往返中壢火車站".$ShuttleBus_D3_會場往返中壢火車站."</td>";
 									echo "</tr>";
 								?>	
 							</tbody>

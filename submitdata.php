@@ -7,6 +7,10 @@
 		if(isset($_POST['Cname'])) $Cname=$_POST['Cname'];
 		$Unit="";
 		if(isset($_POST['Unit'])) $Unit=$_POST['Unit'];
+		$Department="";
+		if(isset($_POST['Department'])) $Department=$_POST['Department'];
+		$StuID="";
+		if(isset($_POST['StuID'])) $StuID=$_POST['StuID'];
 		$Identity="";
 		if(isset($_POST['Identity'])) $Identity=$_POST['Identity'];		
 		$Job="";
@@ -17,8 +21,6 @@
 		if(isset($_POST['Phone'])) $Phone=$_POST['Phone'];		
 		$PapersAmount="";
 		if(isset($_POST['PapersAmount'])) $PapersAmount=$_POST['PapersAmount'];		
-		$PapersAmount_ChiefEditor="";
-		if(isset($_POST['PapersAmount_ChiefEditor'])) $PapersAmount_ChiefEditor=$_POST['PapersAmount_ChiefEditor'];		
 		$PapersID="";
 		if(isset($_POST['PapersID'])) $PapersID=$_POST['PapersID'];	
 		$Transportation="";
@@ -57,12 +59,13 @@
 		/*修正特殊字符*/
 		$Cname=htmlspecialchars($Cname);
 		$Unit=htmlspecialchars($Unit);
+		$Department=htmlspecialchars($Department);
+		$StuID=htmlspecialchars($StuID);
 		$Identity=htmlspecialchars($Identity);
 		$Job=htmlspecialchars($Job);
 		$Email=htmlspecialchars($Email);
 		$Phone=htmlspecialchars($Phone);
 		$PapersAmount=htmlspecialchars($PapersAmount);
-		$PapersAmount_ChiefEditor=htmlspecialchars($PapersAmount_ChiefEditor);
 		$PapersID=htmlspecialchars($PapersID);
 		$Transportation=htmlspecialchars($Transportation);
 		$CarLicense=htmlspecialchars($CarLicense);
@@ -86,8 +89,8 @@
 		$Finance_LastID=0;
 		//加入Personal
 		$sql_query_InsertPersonal="INSERT INTO `personal`" ;
-		$sql_query_InsertPersonal=$sql_query_InsertPersonal."(`Cname`, `Unit`, `Identity`, `Job`, `Email`, `Phone`, `PapersAmount`, `PapersAmount_ChiefEditor`, `PapersID`) VALUES ";
-		$sql_query_InsertPersonal=$sql_query_InsertPersonal."('$Cname','$Unit','$Identity','$Job','$Email','$Phone','$PapersAmount','$PapersAmount_ChiefEditor','$PapersID')";
+		$sql_query_InsertPersonal=$sql_query_InsertPersonal."(`Cname`, `Unit`, `Department`, `StuID`, `Identity`, `Job`, `Email`, `Phone`, `PapersAmount`, `PapersID`) VALUES ";
+		$sql_query_InsertPersonal=$sql_query_InsertPersonal."('$Cname','$Unit','$Department','$StuID','$Identity','$Job','$Email','$Phone','$PapersAmount','$PapersID')";
 		//echo $sql_query_InsertPersonal;
 		$InsertPersonal_result=mysqli_query($db_link,$sql_query_InsertPersonal) or die("InsertPersonal查詢失敗");
 		$sql_query_LastID="SELECT LAST_INSERT_ID() AS LAST_ID";//取得剛剛加入ID
@@ -280,9 +283,23 @@
 									<br>
 									<div class="input-group mb-3">
 										<div class="input-group-prepend">
-											<span class="input-group-text" id="basic-addon1">服務單位／就讀學校</span>
+											<span class="input-group-text" id="basic-addon1">服務學校／就讀學校</span>
 										</div>
-										<input type="text" disabled="disabled" value="<?php echo $Unit;?>" required="required" name="Unit" class="form-control" placeholder="請輸入服務單位／就讀學校" aria-label="Username" aria-describedby="basic-addon1">
+										<input type="text" disabled="disabled" value="<?php echo $Unit;?>" required="required" name="Unit" class="form-control" placeholder="請輸入服務學校／就讀學校" aria-label="Username" aria-describedby="basic-addon1">
+									</div>
+									<br>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text" id="basic-addon1">服務科系／就讀科系</span>
+										</div>
+										<input type="text" disabled="disabled" value="<?php echo $Department;?>" required="required" name="Department" class="form-control" placeholder="請輸入服務學校／就讀學校" aria-label="Username" aria-describedby="basic-addon1">
+									</div>
+									<br>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text" id="basic-addon1">　　學生請輸入學號</span>
+										</div>
+										<input type="text" disabled="disabled" value="<?php echo $StuID;?>" required="required" name="StuID" class="form-control" placeholder="學生請輸入學號" aria-label="Username" aria-describedby="basic-addon1">
 									</div>
 									<br>
 									<div class="input-group mb-3">
@@ -290,14 +307,12 @@
 											<span class="input-group-text" id="basic-addon1">　　　　　　身份別</span>
 										</div>
 										<select class="form-control" name="Identity">
-											<option disabled="disabled" <?php if($Identity=="學⽣（不需發表論⽂者）")echo "selected";?> value="學⽣（不需發表論⽂者）" >學⽣（不需發表論⽂者） NT$2,500</option>
-											<option disabled="disabled" <?php if($Identity=="教授（不需發表論⽂者）")echo "selected";?> value="教授（不需發表論⽂者）">教授（不需發表論⽂者） NT$3,000</option>
-											<option disabled="disabled" <?php if($Identity=="政府單位")echo "selected";?> value="政府單位">政府單位 NT$3,000</option>
-											<option disabled="disabled" <?php if($Identity=="⼀般⼈⼠")echo "selected";?> value="⼀般⼈⼠">⼀般⼈⼠ NT$3,000</option>
-											<option disabled="disabled" <?php if($Identity=="發表論⽂者")echo "selected";?> value="發表論⽂者">發表論⽂者（⼝頭或海報發表皆需報名） NT$3,000</option>
-											<option disabled="disabled" <?php if($Identity=="教育部免費名額")echo "selected";?> value="教育部免費名額">教育部免費名額</option>
-											<option disabled="disabled" <?php if($Identity=="主編")echo "selected";?> value="主編">主編（免註冊費，論⽂⼀篇NT$1,000）</option>
-											<option disabled="disabled" <?php if($Identity=="贊助廠商")echo "selected";?> value="贊助廠商">贊助廠商</option>
+											<option <?php if($Identity=="作者（非學生）")echo "selected";?> value="作者（非學生）">作者（非學生）</option>
+											<option <?php if($Identity=="作者（學生）")echo "selected";?> value="作者（學生）">作者（學生）</option>
+											<option <?php if($Identity=="學生（不需發表論文者）")echo "selected";?> value="學生（不需發表論文者）">學生（不需發表論文者）</option>
+											<option <?php if($Identity=="主編")echo "selected";?> value="主編">主編</option>
+											<option <?php if($Identity=="廠商")echo "selected";?> value="廠商">廠商</option>
+											<option <?php if($Identity=="其他")echo "selected";?> value="其他">其他</option>
 										</select>
 									</div>
 									<br>
@@ -327,13 +342,6 @@
 											<span class="input-group-text" id="basic-addon1">　　　　　論文篇數</span>
 										</div>
 										<input type="text" disabled="disabled" value="<?php echo $PapersAmount;?>" required="required" name="PapersAmount" class="form-control" placeholder="請輸入論文篇數" aria-label="Username" aria-describedby="basic-addon1">
-									</div>
-									<br>
-									<div class="input-group mb-3">
-										<div class="input-group-prepend">
-											<span class="input-group-text" id="basic-addon1">　論文篇數（主編）</span>
-										</div>
-										<input type="text" disabled="disabled" value="<?php echo $PapersAmount_ChiefEditor;?>" required="required" name="PapersAmount_ChiefEditor" class="form-control" placeholder="請輸入論文篇數（主編）" aria-label="Username" aria-describedby="basic-addon1">
 									</div>
 									<br>
 									<div class="input-group mb-3">
@@ -373,9 +381,8 @@
 									</div>
 									<select class="form-control" name="ShuttleBus_D1">
 										<option value="不需要" disabled="disabled" <?php if($_POST['ShuttleBus_D1']=='不需要')echo "selected";?>>不需要</option>
-										<option value="班次一" disabled="disabled" <?php if($_POST['ShuttleBus_D1']=='班次一')echo "selected";?>>班次一</option>
-										<option value="班次二" disabled="disabled" <?php if($_POST['ShuttleBus_D1']=='班次二')echo "selected";?>>班次二</option>
-										<option value="班次三" disabled="disabled" <?php if($_POST['ShuttleBus_D1']=='班次三')echo "selected";?>>班次三</option>
+										<option value="會場往返桃園高鐵站" disabled="disabled" <?php if($_POST['ShuttleBus_D1']=='會場往返桃園高鐵站')echo "selected";?>>會場往返桃園高鐵站</option>
+										<option value="會場往返中壢火車站" disabled="disabled" <?php if($_POST['ShuttleBus_D1']=='會場往返中壢火車站')echo "selected";?>>會場往返中壢火車站</option>
 									</select>
 								</div>
 								<br>
@@ -385,9 +392,8 @@
 									</div>
 									<select class="form-control" name="ShuttleBus_D2">
 										<option value="不需要" disabled="disabled" <?php if($_POST['ShuttleBus_D2']=='不需要')echo "selected";?>>不需要</option>
-										<option value="班次一" disabled="disabled" <?php if($_POST['ShuttleBus_D2']=='班次一')echo "selected";?>>班次一</option>
-										<option value="班次二" disabled="disabled" <?php if($_POST['ShuttleBus_D2']=='班次二')echo "selected";?>>班次二</option>
-										<option value="班次三" disabled="disabled" <?php if($_POST['ShuttleBus_D2']=='班次三')echo "selected";?>>班次三</option>
+										<option value="會場往返桃園高鐵站" disabled="disabled" <?php if($_POST['ShuttleBus_D2']=='會場往返桃園高鐵站')echo "selected";?>>會場往返桃園高鐵站</option>
+										<option value="會場往返中壢火車站" disabled="disabled" <?php if($_POST['ShuttleBus_D2']=='會場往返中壢火車站')echo "selected";?>>會場往返中壢火車站</option>
 									</select>
 								</div>
 								<br>
@@ -397,9 +403,8 @@
 									</div>
 									<select class="form-control" name="ShuttleBus_D3">
 										<option value="不需要" disabled="disabled" <?php if($_POST['ShuttleBus_D3']=='不需要')echo "selected";?>>不需要</option>
-										<option value="班次一" disabled="disabled" <?php if($_POST['ShuttleBus_D3']=='班次一')echo "selected";?>>班次一</option>
-										<option value="班次二" disabled="disabled" <?php if($_POST['ShuttleBus_D3']=='班次二')echo "selected";?>>班次二</option>
-										<option value="班次三" disabled="disabled" <?php if($_POST['ShuttleBus_D3']=='班次三')echo "selected";?>>班次三</option>
+										<option value="會場往返桃園高鐵站" disabled="disabled" <?php if($_POST['ShuttleBus_D3']=='會場往返桃園高鐵站')echo "selected";?>>會場往返桃園高鐵站</option>
+										<option value="會場往返中壢火車站" disabled="disabled" <?php if($_POST['ShuttleBus_D3']=='會場往返中壢火車站')echo "selected";?>>會場往返中壢火車站</option>
 									</select>
 								</div>
 								<br>
