@@ -46,6 +46,7 @@
 				background-repeat: no-repeat;
 				-webkit-background-size: cover;
 				-moz-background-size: cover;
+				margin-top:80px;
 			}
 		</style>
 	</head>
@@ -101,7 +102,7 @@
 		
 		<!-- START  HOME DESIGN -->
 		<!-- <section class="section-top" style="background-image: url(assets/img/bg/section-bg.jpg);  background-size:auto; background-position: center center;"> -->
-		<section class="section-top" style="background-image: url(assets/img/bg/section-bg.jpg);">
+		<section class="section-top zoomimage" style="background-image: url(assets/img/bg/section-bg.jpg);">
 		<div class="overlay">
 			<div class="container">
 					<div class="col-md-10 col-md-offset-1 col-xs-12 text-center">

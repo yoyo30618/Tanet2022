@@ -40,6 +40,7 @@
 				background-repeat: no-repeat;
 				-webkit-background-size: cover;
 				-moz-background-size: cover;
+				margin-top:80px;
 			}
 		</style>
 	</head>
