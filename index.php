@@ -2,6 +2,9 @@
 <html lang="zh-TW">
 	<?php
 		session_start();//開啟session
+		//根據當前SESSION生成隨機數
+		$code = mt_rand(0,1000000);
+		$_SESSION['code'] = $code;
 	?>
 
 	<head>
@@ -113,6 +116,7 @@
 
 		<!-- START FORM -->
 		<form method="post" action="submitdata.php" name="registration" id="registration">
+			<input type="hidden"name="originator" value="<?=$code?>">
 			<section class="faq">
 				<div class="container">
 					<div class="row">
@@ -158,9 +162,8 @@
 											<span class="input-group-text" id="basic-addon1">　　　　　　身份別</span>
 										</div>
 										<select class="form-control" name="Identity">
-											<option value="作者（非學生）" selected>作者（非學生）</option>
-											<option value="作者（學生）">作者（學生）</option>
-											<option value="學生（不需發表論文者）">學生（不需發表論文者）</option>
+											<option value="學生" selected>學生</option>
+											<option value="非學生">非學生</option>
 											<option value="主編">主編</option>
 											<option value="廠商">廠商</option>
 											<option value="其他">其他</option>
@@ -261,6 +264,69 @@
 								<table class="table">
 									<thead class="thead-dark">
 										<tr>
+										<th scope="col">住宿調查</th>
+										<th scope="col">精緻客房(2人房)</th>
+										<th scope="col">親子三人房</th>
+										<th scope="col">溫馨家庭房(4人房)</th>
+										<th scope="col">不需要</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th scope="row">12／14（三）</th>
+											<td>
+												<input required="required" class="form-check-input" type="radio" name="Room_D1" id="flexRadioDefault1" value="精緻客房">
+											</td>
+											<td>
+												<input required="required"  class="form-check-input" type="radio" name="Room_D1" id="flexRadioDefault1" value="親子三人房">
+											</td>
+											<td>
+												<input required="required" class="form-check-input" type="radio" name="Room_D1" id="flexRadioDefault1" value="溫馨家庭房">
+											</td>
+											<td>
+												<input checked required="required" class="form-check-input" type="radio" name="Room_D1" id="flexRadioDefault1" value="不需要">
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">12／15（四）</th>
+											<td>
+												<input required="required" class="form-check-input" type="radio" name="Room_D2" id="flexRadioDefault1" value="精緻客房">
+											</td>
+											<td>
+												<input required="required"  class="form-check-input" type="radio" name="Room_D2" id="flexRadioDefault1" value="親子三人房">
+											</td>
+											<td>
+												<input required="required" class="form-check-input" type="radio" name="Room_D2" id="flexRadioDefault1" value="溫馨家庭房">
+											</td>
+											<td>
+												<input checked required="required" class="form-check-input" type="radio" name="Room_D2" id="flexRadioDefault1" value="不需要">
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">12／16（五）</th>
+											<td>
+												<input required="required" class="form-check-input" type="radio" name="Room_D3" id="flexRadioDefault1" value="精緻客房">
+											</td>
+											<td>
+												<input required="required"  class="form-check-input" type="radio" name="Room_D3" id="flexRadioDefault1" value="親子三人房">
+											</td>
+											<td>
+												<input required="required" class="form-check-input" type="radio" name="Room_D3" id="flexRadioDefault1" value="溫馨家庭房">
+											</td>
+											<td>
+												<input checked required="required" class="form-check-input" type="radio" name="Room_D3" id="flexRadioDefault1" value="不需要">
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								住宿房型及費用資訊請參考：<a href='http://www.tygc.com.tw/tw/rooms.php' target='_blank'>悅華大酒店</a><br>
+								因房數有限，依報名順序安排訂房。
+								<br>
+								<br>
+								<br>								
+								<table class="table">
+									<thead class="thead-dark">
+										<tr>
 										<th scope="col">用餐調查</th>
 										<th scope="col">葷</th>
 										<th scope="col">素</th>
@@ -349,17 +415,31 @@
 						</div><!--- END COL -->
 						<div class="col-md-12 col-sm-12 col-xs-12 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
 							<div class="faq_desc">
-								<p class="question"><span>收據資訊:</span></p>
+								<p class="question"><span>款項資訊:</span></p>
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon1">收據抬頭</span>
+										<span class="input-group-text" id="basic-addon1">匯款帳號後五碼</span>
+									</div>
+									<input type="text" required="required" name="AccountTail" class="form-control" placeholder="請輸入匯款帳號後五碼" aria-label="Username" aria-describedby="basic-addon1">
+								</div>
+								<br>
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="basic-addon1">　　　匯款金額</span>
+									</div>
+									<input type="text" required="required" name="Amount" class="form-control" placeholder="請輸入匯款金額" aria-label="Username" aria-describedby="basic-addon1">
+								</div>
+								<br>
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="basic-addon1">　　　收據抬頭</span>
 									</div>
 									<input type="text" name="ReceiptHeader" class="form-control" placeholder="請輸入收據抬頭" aria-label="Username" aria-describedby="basic-addon1">
 								</div>
 								<br>
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon1">統一編號</span>
+										<span class="input-group-text" id="basic-addon1">　　　統一編號</span>
 									</div>
 									<input type="text" name="TaxID" class="form-control" placeholder="請輸入統一編號" aria-label="Username" aria-describedby="basic-addon1">
 								</div>
@@ -369,7 +449,27 @@
 						<div class="col-md-12 col-sm-12 col-xs-12 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
 							<div class="faq_desc">
 								<p class="question"><span>個資同意宣告:</span></p>
-								<p class="ans">這裡放東西</p>
+								<p class="ans">
+								個人資料蒐集、處理及利用告知暨同意書<br>
+								為了保障您的權益及幫助您瞭解 TANET2022臺灣網際網路研討會 主辦單位如何蒐集、處理及利用您個人資訊，請務必詳細閱讀本同意書之各項內容。<br>
+								一、機構名稱:國立臺北商業大學。<br>
+								二、個人資料蒐集之目的:基於辦理 TANET2022臺灣網際網路研討會 必要工作之目的。<br>
+								三、個人資料蒐集之方式:透過網路報名取得個人資料。<br>
+								四、個人資料蒐集之項目:姓名、飲食、學校名稱、系所、電子郵件、電話號碼。 <br>
+								五、個人資料利用之期間、地區、對象及方式:<br>
+								　　(一) 期間:本次活動結束後兩年。<br>
+								　　(二) 地區:臺灣地區(包括澎湖、金門及馬祖等地區) 。<br>
+								　　(三) 對象:主辦單位、協辦單位、主管機關及 TANET2022臺灣網際網路研討會 承辦單位。 <br>
+								　　(四) 方式:1.電子文件、紙本或其他合於當時科技之適當方式。<br>
+								　　　　　　　&nbsp;2.符合個資法第 16 條規定之利用。<br>
+								六、您得依個資法規定請求查詢、閱覽、製給複製本、補充或更正、請求停止蒐集、處理或利用及請求刪除。行使上述權利時，須依主辦單位規定驗證確認本人身分後提出申請。若委託他人辦理，須另出具委託書並同時提供受託人身份證明文件以供核對。<br>
+								七、若您未提供真實且正確完整之個人資料，導致無法辦理本次研討會相關業務時，將影響個人權益，請特別注意。<br>
+								八、當您簽署本同意書時，即表示您已閱讀、瞭解並同意本同意書之所有內容，亦同意本單位留存本同意書，供日後備查。<br>
+								九、本同意書之解釋與適用，以及本同意書有關之爭議，均應依照中華民國法律予以處理，並以臺灣桃園地方法院為第一審管轄法院。<br>
+								十、若您對此告知事項之內容有任何疑慮，請聯絡 TANET2022臺灣網際網路研討會 承辦人 張小姐 (03)4506333#8131。<br>
+								
+								</p>
+								<input required="required" class="form-check-input" type="radio" name="Looked" id="flexRadioDefault1" >我已充分了解上述告知事項並均予同意<br>
 								<button type="submit"  form="registration" class="btn btn-success">同意以上宣告並確定報名</button>
 							</div>
 						</div><!--- END COL -->

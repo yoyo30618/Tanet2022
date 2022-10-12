@@ -2,6 +2,15 @@
 <?php
 	session_start();//開啟session
 	include_once("conn_mysql.php");
+	if(isset($_POST['originator'])) {
+        if($_POST['originator'] == $_SESSION['code']){
+			$code = mt_rand(0,1000000);
+			$_SESSION['code'] = $code;
+        // 處理該表單的語句,省略
+        }else{
+			echo"<script  language=\"JavaScript\">alert('請勿重複送出表單');location.href=\"index.php\";</script>";
+        }
+    }
 	if(isset($_POST['Cname'])){
 		$Cname="";
 		if(isset($_POST['Cname'])) $Cname=$_POST['Cname'];
@@ -34,6 +43,12 @@
 		if(isset($_POST['ShuttleBus_D2'])) $ShuttleBus_D2=$_POST['ShuttleBus_D2'];
 		$ShuttleBus_D3="";
 		if(isset($_POST['ShuttleBus_D3'])) $ShuttleBus_D3=$_POST['ShuttleBus_D3'];
+		$Room_D1="";
+		if(isset($_POST['Room_D1'])) $Room_D1=$_POST['Room_D1'];	
+		$Room_D2="";
+		if(isset($_POST['Room_D2'])) $Room_D2=$_POST['Room_D2'];	
+		$Room_D3="";
+		if(isset($_POST['Room_D3'])) $Room_D3=$_POST['Room_D3'];	
 		$Lunch_D1="";
 		if(isset($_POST['Lunch_D1'])) $Lunch_D1=$_POST['Lunch_D1'];
 		$Dinner_D1="";
@@ -47,9 +62,15 @@
 		$DinnerCompanion_Omnivorous="";
 		if(isset($_POST['DinnerCompanion_Omnivorous'])) $DinnerCompanion_Omnivorous=$_POST['DinnerCompanion_Omnivorous'];		
 		$DinnerCompanion_Vegetarian="";
+		if(isset($_POST['DinnerCompanion_Vegetarian'])) $DinnerCompanion_Vegetarian=$_POST['DinnerCompanion_Vegetarian'];	
+		$DinnerCompanion_Vegetarian="";
 		if(isset($_POST['DinnerCompanion_Vegetarian'])) $DinnerCompanion_Vegetarian=$_POST['DinnerCompanion_Vegetarian'];
 		$Notice="";
 		if(isset($_POST['Notice'])) $Notice=$_POST['Notice'];		
+		$Amount="";
+		if(isset($_POST['Amount'])) $Amount=$_POST['Amount'];	
+		$AccountTail="";
+		if(isset($_POST['AccountTail'])) $AccountTail=$_POST['AccountTail'];	
 		$ReceiptHeader="";
 		if(isset($_POST['ReceiptHeader'])) $ReceiptHeader=$_POST['ReceiptHeader'];	
 		$TaxID="";
@@ -57,31 +78,36 @@
 		$ReceiptID="";//收據條碼
 
 		/*修正特殊字符*/
-		$Cname=htmlspecialchars($Cname);
-		$Unit=htmlspecialchars($Unit);
-		$Department=htmlspecialchars($Department);
-		$StuID=htmlspecialchars($StuID);
-		$Identity=htmlspecialchars($Identity);
-		$Job=htmlspecialchars($Job);
-		$Email=htmlspecialchars($Email);
-		$Phone=htmlspecialchars($Phone);
-		$PapersAmount=htmlspecialchars($PapersAmount);
-		$PapersID=htmlspecialchars($PapersID);
-		$Transportation=htmlspecialchars($Transportation);
-		$CarLicense=htmlspecialchars($CarLicense);
-		$ShuttleBus_D1=htmlspecialchars($ShuttleBus_D1);
-		$ShuttleBus_D2=htmlspecialchars($ShuttleBus_D2);
-		$ShuttleBus_D3=htmlspecialchars($ShuttleBus_D3);
-		$Lunch_D1=htmlspecialchars($Lunch_D1);
-		$Dinner_D1=htmlspecialchars($Dinner_D1);
-		$Lunch_D2=htmlspecialchars($Lunch_D2);
-		$Dinner_D2=htmlspecialchars($Dinner_D2);
-		$Lunch_D3=htmlspecialchars($Lunch_D3);
-		$DinnerCompanion_Omnivorous=htmlspecialchars($DinnerCompanion_Omnivorous);
-		$DinnerCompanion_Vegetarian=htmlspecialchars($DinnerCompanion_Vegetarian);
-		$Notice=htmlspecialchars($Notice);
-		$ReceiptHeader=htmlspecialchars($ReceiptHeader);
-		$TaxID=htmlspecialchars($TaxID);
+		$Cname=htmlspecialchars($Cname,ENT_QUOTES);
+		$Unit=htmlspecialchars($Unit,ENT_QUOTES);
+		$Department=htmlspecialchars($Department,ENT_QUOTES);
+		$StuID=htmlspecialchars($StuID,ENT_QUOTES);
+		$Identity=htmlspecialchars($Identity,ENT_QUOTES);
+		$Job=htmlspecialchars($Job,ENT_QUOTES);
+		$Email=htmlspecialchars($Email,ENT_QUOTES);
+		$Phone=htmlspecialchars($Phone,ENT_QUOTES);
+		$PapersAmount=htmlspecialchars($PapersAmount,ENT_QUOTES);
+		$PapersID=htmlspecialchars($PapersID,ENT_QUOTES);
+		$Transportation=htmlspecialchars($Transportation,ENT_QUOTES);
+		$CarLicense=htmlspecialchars($CarLicense,ENT_QUOTES);
+		$ShuttleBus_D1=htmlspecialchars($ShuttleBus_D1,ENT_QUOTES);
+		$ShuttleBus_D2=htmlspecialchars($ShuttleBus_D2,ENT_QUOTES);
+		$ShuttleBus_D3=htmlspecialchars($ShuttleBus_D3,ENT_QUOTES);
+		$Room_D1=htmlspecialchars($Room_D1,ENT_QUOTES);
+		$Room_D2=htmlspecialchars($Room_D2,ENT_QUOTES);
+		$Room_D3=htmlspecialchars($Room_D3,ENT_QUOTES);
+		$Lunch_D1=htmlspecialchars($Lunch_D1,ENT_QUOTES);
+		$Dinner_D1=htmlspecialchars($Dinner_D1,ENT_QUOTES);
+		$Lunch_D2=htmlspecialchars($Lunch_D2,ENT_QUOTES);
+		$Dinner_D2=htmlspecialchars($Dinner_D2,ENT_QUOTES);
+		$Lunch_D3=htmlspecialchars($Lunch_D3,ENT_QUOTES);
+		$DinnerCompanion_Omnivorous=htmlspecialchars($DinnerCompanion_Omnivorous,ENT_QUOTES);
+		$DinnerCompanion_Vegetarian=htmlspecialchars($DinnerCompanion_Vegetarian,ENT_QUOTES);
+		$Notice=htmlspecialchars($Notice,ENT_QUOTES);
+		$Amount=htmlspecialchars($Amount,ENT_QUOTES);
+		$AccountTail=htmlspecialchars($AccountTail,ENT_QUOTES);
+		$ReceiptHeader=htmlspecialchars($ReceiptHeader,ENT_QUOTES);
+		$TaxID=htmlspecialchars($TaxID,ENT_QUOTES);
 		
 		//SELECT LAST_INSERT_ID();取得上一筆加入編號
 		$Personal_LastID=0;
@@ -89,8 +115,8 @@
 		$Finance_LastID=0;
 		//加入Personal
 		$sql_query_InsertPersonal="INSERT INTO `personal`" ;
-		$sql_query_InsertPersonal=$sql_query_InsertPersonal."(`Cname`, `Unit`, `Department`, `StuID`, `Identity`, `Job`, `Email`, `Phone`, `PapersAmount`, `PapersID`) VALUES ";
-		$sql_query_InsertPersonal=$sql_query_InsertPersonal."('$Cname','$Unit','$Department','$StuID','$Identity','$Job','$Email','$Phone','$PapersAmount','$PapersID')";
+		$sql_query_InsertPersonal=$sql_query_InsertPersonal."(`Cname`, `Unit`, `Department`, `StuID`, `Identity`, `Job`, `Email`, `Phone`, `PapersAmount`, `PapersID`, `AccountTail`, `Amount`) VALUES ";
+		$sql_query_InsertPersonal=$sql_query_InsertPersonal."('$Cname','$Unit','$Department','$StuID','$Identity','$Job','$Email','$Phone','$PapersAmount','$PapersID','$AccountTail','$Amount')";
 		//echo $sql_query_InsertPersonal;
 		$InsertPersonal_result=mysqli_query($db_link,$sql_query_InsertPersonal) or die("InsertPersonal查詢失敗");
 		$sql_query_LastID="SELECT LAST_INSERT_ID() AS LAST_ID";//取得剛剛加入ID
@@ -101,8 +127,9 @@
 		}
 		//加入Seminar
 		$sql_query_InsertSeminar="INSERT INTO `seminar`";
-		$sql_query_InsertSeminar=$sql_query_InsertSeminar."(`Transportation`, `ShuttleBus_D1`, `ShuttleBus_D2`, `ShuttleBus_D3`, `CarLicense`, `Lunch_D1`, `Lunch_D2`, `Lunch_D3`, `Dinner_D1`, `Dinner_D2`, `DinnerCompanion_Omnivorous`, `DinnerCompanion_Vegetarian`, `Notice`) VALUES ";
-		$sql_query_InsertSeminar=$sql_query_InsertSeminar."('$Transportation','$ShuttleBus_D1','$ShuttleBus_D2','$ShuttleBus_D3','$CarLicense','$Lunch_D1','$Lunch_D2','$Lunch_D3','$Dinner_D1','$Dinner_D2','$DinnerCompanion_Omnivorous','$DinnerCompanion_Vegetarian','$Notice')";
+		$sql_query_InsertSeminar=$sql_query_InsertSeminar."(`Transportation`, `ShuttleBus_D1`, `ShuttleBus_D2`, `ShuttleBus_D3`, `CarLicense`, `Room_D1`, `Room_D2`, `Room_D3`, `Lunch_D1`, `Lunch_D2`, `Lunch_D3`, `Dinner_D1`, `Dinner_D2`, `DinnerCompanion_Omnivorous`, `DinnerCompanion_Vegetarian`, `Notice`) VALUES ";
+		$sql_query_InsertSeminar=$sql_query_InsertSeminar."('$Transportation','$ShuttleBus_D1','$ShuttleBus_D2','$ShuttleBus_D3','$CarLicense','$Room_D1','$Room_D2','$Room_D3','$Lunch_D1','$Lunch_D2','$Lunch_D3','$Dinner_D1','$Dinner_D2','$DinnerCompanion_Omnivorous','$DinnerCompanion_Vegetarian','$Notice')";
+		// echo $sql_query_InsertSeminar;
 		$InsertSeminar_result=mysqli_query($db_link,$sql_query_InsertSeminar) or die("InsertSeminar查詢失敗");
 		$sql_query_LastID="SELECT LAST_INSERT_ID() AS LAST_ID";//取得剛剛加入ID
 		$LastID_result=mysqli_query($db_link,$sql_query_LastID) or die("InsertSeminar查詢失敗");//上一筆加入的ID
@@ -308,9 +335,8 @@
 											<span class="input-group-text" id="basic-addon1">　　　　　　身份別</span>
 										</div>
 										<select class="form-control" name="Identity">
-											<option <?php if($Identity=="作者（非學生）")echo "selected";?> value="作者（非學生）">作者（非學生）</option>
-											<option <?php if($Identity=="作者（學生）")echo "selected";?> value="作者（學生）">作者（學生）</option>
-											<option <?php if($Identity=="學生（不需發表論文者）")echo "selected";?> value="學生（不需發表論文者）">學生（不需發表論文者）</option>
+											<option <?php if($Identity=="學生")echo "selected";?> value="學生">學生</option>
+											<option <?php if($Identity=="非學生")echo "selected";?> value="非學生">非學生</option>
 											<option <?php if($Identity=="主編")echo "selected";?> value="主編">主編</option>
 											<option <?php if($Identity=="廠商")echo "selected";?> value="廠商">廠商</option>
 											<option <?php if($Identity=="其他")echo "selected";?> value="其他">其他</option>
@@ -412,6 +438,69 @@
 								<table class="table">
 									<thead class="thead-dark">
 										<tr>
+										<th scope="col">住宿調查</th>
+										<th scope="col">精緻客房(2人房)</th>
+										<th scope="col">親子三人房</th>
+										<th scope="col">溫馨家庭房(4人房)</th>
+										<th scope="col">不需要</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th scope="row">12／14（三）</th>
+											<td>
+												<input disabled required="required" class="form-check-input" type="radio" name="Room_D1" id="flexRadioDefault1" value="精緻客房" <?php if($Room_D1=="精緻客房") echo "checked";?>>
+											</td>
+											<td>
+												<input disabled required="required"  class="form-check-input" type="radio" name="Room_D1" id="flexRadioDefault1" value="親子三人房" <?php if($Room_D1=="親子三人房") echo "checked";?>>
+											</td>
+											<td>
+												<input disabled required="required" class="form-check-input" type="radio" name="Room_D1" id="flexRadioDefault1" value="溫馨家庭房" <?php if($Room_D1=="溫馨家庭房") echo "checked";?>>
+											</td>
+											<td>
+												<input disabled required="required" class="form-check-input" type="radio" name="Room_D1" id="flexRadioDefault1" value="不需要" <?php if($Room_D1=="不需要") echo "checked";?>>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">12／15（四）</th>
+											<td>
+												<input disabled required="required" class="form-check-input" type="radio" name="Room_D2" id="flexRadioDefault1" value="精緻客房" <?php if($Room_D2=="精緻客房") echo "checked";?>>
+											</td>
+											<td>
+												<input disabled required="required"  class="form-check-input" type="radio" name="Room_D2" id="flexRadioDefault1" value="親子三人房" <?php if($Room_D2=="親子三人房") echo "checked";?>>
+											</td>
+											<td>
+												<input disabled required="required" class="form-check-input" type="radio" name="Room_D2" id="flexRadioDefault1" value="溫馨家庭房" <?php if($Room_D2=="溫馨家庭房") echo "checked";?>>
+											</td>
+											<td>
+												<input disabled required="required" class="form-check-input" type="radio" name="Room_D2" id="flexRadioDefault1" value="不需要" <?php if($Room_D2=="不需要") echo "checked";?>>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">12／16（五）</th>
+											<td>
+												<input disabled required="required" class="form-check-input" type="radio" name="Room_D3" id="flexRadioDefault1" value="精緻客房" <?php if($Room_D3=="精緻客房") echo "checked";?>>
+											</td>
+											<td>
+												<input disabled required="required"  class="form-check-input" type="radio" name="Room_D3" id="flexRadioDefault1" value="親子三人房" <?php if($Room_D3=="親子三人房") echo "checked";?>>
+											</td>
+											<td>
+												<input disabled required="required" class="form-check-input" type="radio" name="Room_D3" id="flexRadioDefault1" value="溫馨家庭房" <?php if($Room_D3=="溫馨家庭房") echo "checked";?>>
+											</td>
+											<td>
+												<input disabled required="required" class="form-check-input" type="radio" name="Room_D3" id="flexRadioDefault1" value="不需要" <?php if($Room_D3=="不需要") echo "checked";?>>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								住宿房型及費用資訊請參考：<a href='http://www.tygc.com.tw/tw/rooms.php' target='_blank'>悅華大酒店</a><br>
+								因房數有限，依報名順序安排訂房。
+								<br>
+								<br>
+								<br>	
+								<table class="table">
+									<thead class="thead-dark">
+										<tr>
 										<th scope="col">用餐調查</th>
 										<th scope="col">葷</th>
 										<th scope="col">素</th>
@@ -500,30 +589,63 @@
 						</div><!--- END COL -->
 						<div class="col-md-12 col-sm-12 col-xs-12 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
 							<div class="faq_desc">
-								<p class="question"><span>收據資訊:</span></p>
+								<p class="question"><span>款項資訊:</span></p>
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon1">收據抬頭</span>
+										<span class="input-group-text" id="basic-addon1">匯款帳號後五碼</span>
+									</div>
+									<input type="text" disabled="disabled" value="<?php echo $AccountTail;?>" name="AccountTail" class="form-control" placeholder="請輸入匯款帳號後五碼" aria-label="Username" aria-describedby="basic-addon1">
+								</div>
+								<br>
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="basic-addon1">　　　匯款金額</span>
+									</div>
+									<input type="text" disabled="disabled" value="<?php echo $Amount;?>" name="Amount" class="form-control" placeholder="請輸入匯款金額" aria-label="Username" aria-describedby="basic-addon1">
+								</div>
+								<br>
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="basic-addon1">　　　收據抬頭</span>
 									</div>
 									<input type="text" disabled="disabled" value="<?php echo $ReceiptHeader;?>" name="ReceiptHeader" class="form-control" placeholder="請輸入收據抬頭" aria-label="Username" aria-describedby="basic-addon1">
 								</div>
 								<br>
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon1">統一編號</span>
+										<span class="input-group-text" id="basic-addon1">　　　統一編號</span>
 									</div>
 									<input type="text" disabled="disabled" value="<?php echo $TaxID;?>" name="TaxID" class="form-control" placeholder="請輸入統一編號" aria-label="Username" aria-describedby="basic-addon1">
 								</div>
 								<br>
 							</div>
 						</div><!--- END COL -->
-						<!-- <div class="col-md-12 col-sm-12 col-xs-12 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+						<div class="col-md-12 col-sm-12 col-xs-12 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
 							<div class="faq_desc">
 								<p class="question"><span>個資同意宣告:</span></p>
-								<p class="ans">這裡放東西</p>
-								<button type="submit"  form="registration" class="btn btn-success" ONCLICK="varitext()">列印本頁面</button>
+								<p class="ans">
+								個人資料蒐集、處理及利用告知暨同意書<br>
+								為了保障您的權益及幫助您瞭解 TANET2022臺灣網際網路研討會 主辦單位如何蒐集、處理及利用您個人資訊，請務必詳細閱讀本同意書之各項內容。<br>
+								一、機構名稱:國立臺北商業大學。<br>
+								二、個人資料蒐集之目的:基於辦理 TANET2022臺灣網際網路研討會 必要工作之目的。<br>
+								三、個人資料蒐集之方式:透過網路報名取得個人資料。<br>
+								四、個人資料蒐集之項目:姓名、飲食、學校名稱、系所、電子郵件、電話號碼。 <br>
+								五、個人資料利用之期間、地區、對象及方式:<br>
+								　　(一) 期間:本次活動結束後兩年。<br>
+								　　(二) 地區:臺灣地區(包括澎湖、金門及馬祖等地區) 。<br>
+								　　(三) 對象:主辦單位、協辦單位、主管機關及 TANET2022臺灣網際網路研討會 承辦單位。 <br>
+								　　(四) 方式:1.電子文件、紙本或其他合於當時科技之適當方式。<br>
+								　　　　　　　&nbsp;2.符合個資法第 16 條規定之利用。<br>
+								六、您得依個資法規定請求查詢、閱覽、製給複製本、補充或更正、請求停止蒐集、處理或利用及請求刪除。行使上述權利時，須依主辦單位規定驗證確認本人身分後提出申請。若委託他人辦理，須另出具委託書並同時提供受託人身份證明文件以供核對。<br>
+								七、若您未提供真實且正確完整之個人資料，導致無法辦理本次研討會相關業務時，將影響個人權益，請特別注意。<br>
+								八、當您簽署本同意書時，即表示您已閱讀、瞭解並同意本同意書之所有內容，亦同意本單位留存本同意書，供日後備查。<br>
+								九、本同意書之解釋與適用，以及本同意書有關之爭議，均應依照中華民國法律予以處理，並以臺灣桃園地方法院為第一審管轄法院。<br>
+								十、若您對此告知事項之內容有任何疑慮，請聯絡 TANET2022臺灣網際網路研討會 承辦人 張小姐 (03)4506333#8131。<br>
+								本人已充分了解上述告知事項並均予同意
+								</p>
+								
 							</div>
-						</div>- END COL -->
+						</div><!--- END COL -->
 					</div><!--- END ROW -->
 				</div><!--- END CONTAINER -->
 			</section>

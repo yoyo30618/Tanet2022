@@ -171,6 +171,9 @@
 
 							$Transportation='';
 							$CarLicense='';
+							$Room_D1='';
+							$Room_D2='';
+							$Room_D3='';
 							$ShuttleBus_D1='';
 							$ShuttleBus_D2='';
 							$ShuttleBus_D3='';
@@ -183,6 +186,8 @@
 							$DinnerCompanion_Vegetarian='';
 							$Notice='';
 
+							$Amount='';
+							$AccountTail='';
 							$ReceiptHeader='';
 							$TaxID='';
 							if($rowcount!=0){//有ID 可查資料 $_GET['search_ID']
@@ -212,6 +217,8 @@
 									$PapersAmount=$row_PersonalData['PapersAmount'];
 									$PapersID=$row_PersonalData['PapersID'];
 									$PersonalID=$row_PersonalData['_ID'];
+									$Amount=$row_PersonalData['Amount'];
+									$AccountTail=$row_PersonalData['AccountTail'];
 									break;
 								}								
 								//處理SeminarData
@@ -222,6 +229,9 @@
 									$ShuttleBus_D1=$row_SeminarData['ShuttleBus_D1'];
 									$ShuttleBus_D2=$row_SeminarData['ShuttleBus_D2'];
 									$ShuttleBus_D3=$row_SeminarData['ShuttleBus_D3'];
+									$Room_D1=$row_SeminarData['Room_D1'];
+									$Room_D2=$row_SeminarData['Room_D2'];
+									$Room_D3=$row_SeminarData['Room_D3'];
 									$Lunch_D1=$row_SeminarData['Lunch_D1'];
 									$Lunch_D2=$row_SeminarData['Lunch_D2'];
 									$Lunch_D3=$row_SeminarData['Lunch_D3'];
@@ -278,9 +288,8 @@
 														<span class="input-group-text" id="basic-addon1">　　　　　　身份別</span>
 													</div>
 													<select class="form-control" name="Identity">
-														<option <?php if($Identity=="作者（非學生）")echo "selected";?> value="作者（非學生）">作者（非學生）</option>
-														<option <?php if($Identity=="作者（學生）")echo "selected";?> value="作者（學生）">作者（學生）</option>
-														<option <?php if($Identity=="學生（不需發表論文者）")echo "selected";?> value="學生（不需發表論文者）">學生（不需發表論文者）</option>
+														<option <?php if($Identity=="學生")echo "selected";?> value="學生">學生</option>
+														<option <?php if($Identity=="非學生")echo "selected";?> value="非學生">非學生</option>
 														<option <?php if($Identity=="主編")echo "selected";?> value="主編">主編</option>
 														<option <?php if($Identity=="廠商")echo "selected";?> value="廠商">廠商</option>
 														<option <?php if($Identity=="其他")echo "selected";?> value="其他">其他</option>
@@ -382,6 +391,69 @@
 											<table class="table">
 												<thead class="thead-dark">
 													<tr>
+													<th scope="col">住宿調查</th>
+													<th scope="col">精緻客房(2人房)</th>
+													<th scope="col">親子三人房</th>
+													<th scope="col">溫馨家庭房(4人房)</th>
+													<th scope="col">不需要</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<th scope="row">12／14（三）</th>
+														<td>
+															<input required="required" class="form-check-input" type="radio" name="Room_D1" id="flexRadioDefault1" value="精緻客房" <?php if($Room_D1=="精緻客房") echo "checked";?>>
+														</td>
+														<td>
+															<input required="required"  class="form-check-input" type="radio" name="Room_D1" id="flexRadioDefault1" value="親子三人房" <?php if($Room_D1=="親子三人房") echo "checked";?>>
+														</td>
+														<td>
+															<input required="required" class="form-check-input" type="radio" name="Room_D1" id="flexRadioDefault1" value="溫馨家庭房" <?php if($Room_D1=="溫馨家庭房") echo "checked";?>>
+														</td>
+														<td>
+															<input required="required" class="form-check-input" type="radio" name="Room_D1" id="flexRadioDefault1" value="不需要" <?php if($Room_D1=="不需要") echo "checked";?>>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row">12／15（四）</th>
+														<td>
+															<input required="required" class="form-check-input" type="radio" name="Room_D2" id="flexRadioDefault1" value="精緻客房" <?php if($Room_D2=="精緻客房") echo "checked";?>>
+														</td>
+														<td>
+															<input required="required"  class="form-check-input" type="radio" name="Room_D2" id="flexRadioDefault1" value="親子三人房" <?php if($Room_D2=="親子三人房") echo "checked";?>>
+														</td>
+														<td>
+															<input required="required" class="form-check-input" type="radio" name="Room_D2" id="flexRadioDefault1" value="溫馨家庭房" <?php if($Room_D2=="溫馨家庭房") echo "checked";?>>
+														</td>
+														<td>
+															<input required="required" class="form-check-input" type="radio" name="Room_D2" id="flexRadioDefault1" value="不需要" <?php if($Room_D2=="不需要") echo "checked";?>>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row">12／16（五）</th>
+														<td>
+															<input required="required" class="form-check-input" type="radio" name="Room_D3" id="flexRadioDefault1" value="精緻客房" <?php if($Room_D3=="精緻客房") echo "checked";?>>
+														</td>
+														<td>
+															<input required="required"  class="form-check-input" type="radio" name="Room_D3" id="flexRadioDefault1" value="親子三人房" <?php if($Room_D3=="親子三人房") echo "checked";?>>
+														</td>
+														<td>
+															<input required="required" class="form-check-input" type="radio" name="Room_D3" id="flexRadioDefault1" value="溫馨家庭房" <?php if($Room_D3=="溫馨家庭房") echo "checked";?>>
+														</td>
+														<td>
+															<input required="required" class="form-check-input" type="radio" name="Room_D3" id="flexRadioDefault1" value="不需要" <?php if($Room_D3=="不需要") echo "checked";?>>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+											住宿房型及費用資訊請參考：<a href='http://www.tygc.com.tw/tw/rooms.php' target='_blank'>悅華大酒店</a><br>
+											因房數有限，依報名順序安排訂房。
+											<br>
+											<br>
+											<br>								
+											<table class="table">
+												<thead class="thead-dark">
+													<tr>
 													<th scope="col">用餐調查</th>
 													<th scope="col">葷</th>
 													<th scope="col">素</th>
@@ -470,17 +542,31 @@
 									</div><!--- END COL -->
 									<div class="col-md-12 col-sm-12 col-xs-12 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
 										<div class="faq_desc">
-											<p class="question"><span>收據資訊:</span></p>
+										<p class="question"><span>款項資訊:</span></p>
+										<div class="input-group mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text" id="basic-addon1">匯款帳號後五碼</span>
+											</div>
+											<input type="text" value="<?php echo $AccountTail;?>" name="AccountTail" class="form-control" placeholder="請輸入匯款帳號後五碼" aria-label="Username" aria-describedby="basic-addon1">
+										</div>
+										<br>
+										<div class="input-group mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text" id="basic-addon1">　　　匯款金額</span>
+											</div>
+											<input type="text" value="<?php echo $Amount;?>" name="Amount" class="form-control" placeholder="請輸入匯款金額" aria-label="Username" aria-describedby="basic-addon1">
+										</div>
+										<br>
 											<div class="input-group mb-3">
 												<div class="input-group-prepend">
-													<span class="input-group-text" id="basic-addon1">收據抬頭</span>
+													<span class="input-group-text" id="basic-addon1">　　　收據抬頭</span>
 												</div>
 												<input type="text"  value="<?php echo $ReceiptHeader;?>" name="ReceiptHeader" class="form-control" placeholder="請輸入收據抬頭" aria-label="Username" aria-describedby="basic-addon1">
 											</div>
 											<br>
 											<div class="input-group mb-3">
 												<div class="input-group-prepend">
-													<span class="input-group-text" id="basic-addon1">統一編號</span>
+													<span class="input-group-text" id="basic-addon1">　　　統一編號</span>
 												</div>
 												<input type="text"  value="<?php echo $TaxID;?>" name="TaxID" class="form-control" placeholder="請輸入統一編號" aria-label="Username" aria-describedby="basic-addon1">
 											</div>

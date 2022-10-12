@@ -254,22 +254,18 @@
 						<table class="table">
 							<thead>
 								<tr>
-									<th scope="col" rowspan="2" style="text-align:center;">報名人數</th>
-									<th scope="col" rowspan="2" style="text-align:center;">論文篇數</th>
-									<th scope="col" colspan="3" style="text-align:center;">午餐</th>
-									<th scope="col" colspan="2" style="text-align:center;">晚餐</th>
-									<th scope="col" rowspan="2" style="text-align:center;">晚宴攜伴</th>
-									<th scope="col" colspan="3" style="text-align:center;">交通方式</th>
+									<th scope="col" rowspan="2" style="text-align:center;vertical-align: middle;">報名人數</th>
+									<th scope="col" rowspan="2" style="text-align:center;vertical-align: middle;">論文篇數</th>
+									<th scope="col" colspan="3" style="text-align:center;border-right:1px solid;">午餐</th>
+									<th scope="col" colspan="2" style="text-align:center;border-right:1px solid;">晚餐</th>
+									<th scope="col" rowspan="2" style="text-align:center;vertical-align: middle;">晚宴攜伴</th>
 								</tr>
 								<tr>
 									<th scope="col" style="text-align:center;">12/15(四)</th>
 									<th scope="col" style="text-align:center;">12/16(五)</th>
-									<th scope="col" style="text-align:center;">12/17(六)</th>
+									<th scope="col" style="text-align:center;border-right:1px solid">12/17(六)</th>
 									<th scope="col" style="text-align:center;">12/15(四)</th>
-									<th scope="col" style="text-align:center;">12/16(五)</th>
-									<th scope="col" style="text-align:center;">12/15(四)</th>
-									<th scope="col" style="text-align:center;">12/16(五)</th>
-									<th scope="col" style="text-align:center;">12/17(六)</th>
+									<th scope="col" style="text-align:center;border-right:1px solid">12/16(五)</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -297,6 +293,19 @@
 									$Dinner_D2_不需要=0;
 									$DinnerCompanion_Omnivorous=0;
 									$DinnerCompanion_Vegetarian=0;
+									$Room_D1_0p=0;
+									$Room_D1_2p=0;
+									$Room_D1_3p=0;
+									$Room_D1_4p=0;
+									$Room_D2_0p=0;
+									$Room_D2_2p=0;
+									$Room_D2_3p=0;
+									$Room_D2_4p=0;
+									$Room_D3_0p=0;
+									$Room_D3_2p=0;
+									$Room_D3_3p=0;
+									$Room_D3_4p=0;
+
 									$ShuttleBus_D1_不需要=0;
 									$ShuttleBus_D1_會場往返桃園高鐵站=0;
 									$ShuttleBus_D1_會場往返中壢火車站=0;
@@ -326,11 +335,15 @@
 									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `Dinner_D1`='葷' THEN 1 END) AS Dinner_D1_葷 ,COUNT(CASE WHEN `Dinner_D1`='素' THEN 1 END) AS Dinner_D1_素 ,COUNT(CASE WHEN `Dinner_D1`='不需要' THEN 1 END) AS Dinner_D1_不需要,";
 									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `Dinner_D2`='葷' THEN 1 END) AS Dinner_D2_葷 ,COUNT(CASE WHEN `Dinner_D2`='素' THEN 1 END) AS Dinner_D2_素 ,COUNT(CASE WHEN `Dinner_D2`='不需要' THEN 1 END) AS Dinner_D2_不需要,";
 									$sql_query_Data=$sql_query_Data."SUM(`DinnerCompanion_Omnivorous`) AS DinnerCompanion_Omnivorous ,SUM(`DinnerCompanion_Vegetarian`) AS DinnerCompanion_Vegetarian,";
+									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `Room_D1`='不需要' THEN 1 END) AS Room_D1_0p ,COUNT(CASE WHEN `Room_D1`='精緻客房' THEN 1 END) AS Room_D1_2p ,COUNT(CASE WHEN `Room_D1`='親子三人房' THEN 1 END) AS Room_D1_3p,COUNT(CASE WHEN `Room_D1`='溫馨家庭房' THEN 1 END) AS Room_D1_4p,";
+									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `Room_D2`='不需要' THEN 1 END) AS Room_D2_0p ,COUNT(CASE WHEN `Room_D2`='精緻客房' THEN 1 END) AS Room_D2_2p ,COUNT(CASE WHEN `Room_D2`='親子三人房' THEN 1 END) AS Room_D2_3p,COUNT(CASE WHEN `Room_D2`='溫馨家庭房' THEN 1 END) AS Room_D2_4p,";
+									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `Room_D3`='不需要' THEN 1 END) AS Room_D3_0p ,COUNT(CASE WHEN `Room_D3`='精緻客房' THEN 1 END) AS Room_D3_2p ,COUNT(CASE WHEN `Room_D3`='親子三人房' THEN 1 END) AS Room_D3_3p,COUNT(CASE WHEN `Room_D3`='溫馨家庭房' THEN 1 END) AS Room_D3_4p,";
+									
 									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `ShuttleBus_D1`='不需要' THEN 1 END) AS ShuttleBus_D1_不需要 ,COUNT(CASE WHEN `ShuttleBus_D1`='會場往返桃園高鐵站' THEN 1 END) AS ShuttleBus_D1_會場往返桃園高鐵站 ,COUNT(CASE WHEN `ShuttleBus_D1`='會場往返中壢火車站' THEN 1 END) AS ShuttleBus_D1_會場往返中壢火車站,";
 									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `ShuttleBus_D2`='不需要' THEN 1 END) AS ShuttleBus_D2_不需要 ,COUNT(CASE WHEN `ShuttleBus_D2`='會場往返桃園高鐵站' THEN 1 END) AS ShuttleBus_D2_會場往返桃園高鐵站 ,COUNT(CASE WHEN `ShuttleBus_D2`='會場往返中壢火車站' THEN 1 END) AS ShuttleBus_D2_會場往返中壢火車站,";
 									$sql_query_Data=$sql_query_Data."COUNT(CASE WHEN `ShuttleBus_D3`='不需要' THEN 1 END) AS ShuttleBus_D3_不需要 ,COUNT(CASE WHEN `ShuttleBus_D3`='會場往返桃園高鐵站' THEN 1 END) AS ShuttleBus_D3_會場往返桃園高鐵站 ,COUNT(CASE WHEN `ShuttleBus_D3`='會場往返中壢火車站' THEN 1 END) AS ShuttleBus_D3_會場往返中壢火車站";
 									$sql_query_Data=$sql_query_Data." FROM `seminar` WHERE 1";
-									//echo $sql_query_Data;
+									// echo $sql_query_Data;
 									$DataID_result=mysqli_query($db_link,$sql_query_Data) or die("sql_query_Data查詢失敗");
 									while($rowData=mysqli_fetch_array($DataID_result)){
 										$Lunch_D1_葷=$rowData['Lunch_D1_葷'];
@@ -349,7 +362,19 @@
 										$Dinner_D2_素=$rowData['Dinner_D2_素'];
 										$Dinner_D2_不需要=$rowData['Dinner_D2_不需要'];
 										$DinnerCompanion_Omnivorous=$rowData['DinnerCompanion_Omnivorous'];
-										$DinnerCompanion_Vegetarian=$rowData['DinnerCompanion_Vegetarian'];
+										$DinnerCompanion_Vegetarian=$rowData['DinnerCompanion_Vegetarian'];										
+										$Room_D1_0p=$rowData['Room_D1_0p'];
+										$Room_D1_2p=$rowData['Room_D1_2p'];
+										$Room_D1_3p=$rowData['Room_D1_3p'];
+										$Room_D1_4p=$rowData['Room_D1_4p'];
+										$Room_D2_0p=$rowData['Room_D2_0p'];
+										$Room_D2_2p=$rowData['Room_D2_2p'];
+										$Room_D2_3p=$rowData['Room_D2_3p'];
+										$Room_D2_4p=$rowData['Room_D2_4p'];
+										$Room_D3_0p=$rowData['Room_D3_0p'];
+										$Room_D3_2p=$rowData['Room_D3_2p'];
+										$Room_D3_3p=$rowData['Room_D3_3p'];
+										$Room_D3_4p=$rowData['Room_D3_4p'];
 										$ShuttleBus_D1_不需要=$rowData['ShuttleBus_D1_不需要'];
 										$ShuttleBus_D1_會場往返桃園高鐵站=$rowData['ShuttleBus_D1_會場往返桃園高鐵站'];
 										$ShuttleBus_D1_會場往返中壢火車站=$rowData['ShuttleBus_D1_會場往返中壢火車站'];
@@ -367,13 +392,41 @@
 									echo "<td style='text-align:center;'>".$Cnt_PapersAmount."</td>";
 									echo "<td style='text-align:center;'>葷".$Lunch_D1_葷."<br>素".$Lunch_D1_素."<br>不需要".$Lunch_D1_不需要."</td>";
 									echo "<td style='text-align:center;'>葷".$Lunch_D2_葷."<br>素".$Lunch_D2_素."<br>不需要".$Lunch_D2_不需要."</td>";
-									echo "<td style='text-align:center;'>葷".$Lunch_D3_葷."<br>素".$Lunch_D3_素."<br>不需要".$Lunch_D3_不需要."</td>";
+									echo "<td style='text-align:center;border-right:1px solid'>葷".$Lunch_D3_葷."<br>素".$Lunch_D3_素."<br>不需要".$Lunch_D3_不需要."</td>";
 									echo "<td style='text-align:center;'>葷".$Dinner_D1_葷."<br>素".$Dinner_D1_素."<br>不需要".$Dinner_D1_不需要."</td>";
-									echo "<td style='text-align:center;'>葷".$Dinner_D2_葷."<br>素".$Dinner_D2_素."<br>不需要".$Dinner_D2_不需要."</td>";
+									echo "<td style='text-align:center;border-right:1px solid'>葷".$Dinner_D2_葷."<br>素".$Dinner_D2_素."<br>不需要".$Dinner_D2_不需要."</td>";
 									echo "<td style='text-align:center;'>葷".$DinnerCompanion_Omnivorous."<br>素".$DinnerCompanion_Vegetarian."<br></td>";
-									echo "<td style='text-align:center;'>不需要".$ShuttleBus_D1_不需要."<br>會場往返桃園高鐵站".$ShuttleBus_D1_會場往返桃園高鐵站."<br>會場往返中壢火車站".$ShuttleBus_D1_會場往返中壢火車站."</td>";
-									echo "<td style='text-align:center;'>不需要".$ShuttleBus_D2_不需要."<br>會場往返桃園高鐵站".$ShuttleBus_D2_會場往返桃園高鐵站."<br>會場往返中壢火車站".$ShuttleBus_D2_會場往返中壢火車站."</td>";
-									echo "<td style='text-align:center;'>不需要".$ShuttleBus_D3_不需要."<br>會場往返桃園高鐵站".$ShuttleBus_D3_會場往返桃園高鐵站."<br>會場往返中壢火車站".$ShuttleBus_D3_會場往返中壢火車站."</td>";
+									echo "</tr>";
+								?>	
+							</tbody>
+						</table>
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col" colspan="3" style="text-align:center;border-right:1px solid;">住宿資訊</th>
+									<th scope="col" colspan="3" style="text-align:center;">交通方式</th>
+								</tr>
+								<tr>
+									<th scope="col" style="text-align:center;">12/14(三)</th>
+									<th scope="col" style="text-align:center;">12/15(四)</th>
+									<th scope="col" style="text-align:center;border-right:1px solid;">12/16(五)</th>
+									<th scope="col" style="text-align:center;">12/15(四)</th>
+									<th scope="col" style="text-align:center;">12/16(五)</th>
+									<th scope="col" style="text-align:center;">12/17(六)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php 
+									
+									echo "<tr>";
+									echo "<td style='text-align:center;'>精緻客房(2人房)".$Room_D1_2p."<br>親子三人房".$Room_D1_3p."<br>溫馨家庭房(4人房)".$Room_D1_4p."<br>不需要".$Room_D1_0p."</td>";
+									echo "<td style='text-align:center;'>精緻客房(2人房)".$Room_D2_2p."<br>親子三人房".$Room_D2_3p."<br>溫馨家庭房(4人房)".$Room_D2_4p."<br>不需要".$Room_D2_0p."</td>";
+									echo "<td style='text-align:center;border-right:1px solid'>精緻客房(2人房)".$Room_D3_2p."<br>親子三人房".$Room_D3_3p."<br>溫馨家庭房(4人房)".$Room_D3_4p."<br>不需要".$Room_D3_0p."</td>";
+									
+									
+									echo "<td style='text-align:center;'>會場往返桃園高鐵站".$ShuttleBus_D1_會場往返桃園高鐵站."<br>會場往返中壢火車站".$ShuttleBus_D1_會場往返中壢火車站."<br>不需要".$ShuttleBus_D1_不需要."</td>";
+									echo "<td style='text-align:center;'>會場往返桃園高鐵站".$ShuttleBus_D2_會場往返桃園高鐵站."<br>會場往返中壢火車站".$ShuttleBus_D2_會場往返中壢火車站."<br>不需要".$ShuttleBus_D2_不需要."</td>";
+									echo "<td style='text-align:center;'>會場往返桃園高鐵站".$ShuttleBus_D3_會場往返桃園高鐵站."<br>會場往返中壢火車站".$ShuttleBus_D3_會場往返中壢火車站."<br>不需要".$ShuttleBus_D3_不需要."</td>";
 									echo "</tr>";
 								?>	
 							</tbody>

@@ -204,7 +204,7 @@ vertical-align: middle;
 /*SECTION OVERLAY*/
 .overlay {
     /* background: rgba(0,0,0,0.6) none repeat scroll 0 0; */
-    /* padding: 60px 0; */
+    padding: 60px 0;
 }
 /*END SECTION OVERLAY*/
 /*
@@ -253,7 +253,7 @@ vertical-align: middle;
 .navbar-brand { padding: 0px }
 .navbar-brand img { width: 150px }
 .menu-top li a {
-    /* color: #f3f3f3  !important; */
+    color: #000000  !important;
     font-family: "Montserrat",sans-serif;
     font-size: 12px;
     font-weight: 400;
